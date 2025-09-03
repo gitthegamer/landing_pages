@@ -1,0 +1,272 @@
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (min-width: 568px) {
+  .refer-banner-wrapper {
+    .text-title,
+    .text-title.bm {
+      font-size: 42px;
+    }
+
+    .text-content,
+    .text-content.bm {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --f7-font-size: 16px;
+    --f7-toolbar-font-size: 18px;
+    --f7-tabbar-icons-height: 0px !important;
+
+    --f7-dialog-width: 800px;
+
+    --header-height: 100px;
+    --submenu-height: 0px;
+  }
+
+  .toolbar-top.tabbar-icons ~ *,
+  .ios .toolbar-top-ios.tabbar-icons ~ *,
+  .md .toolbar-top-md.tabbar-icons ~ * {
+    --f7-page-navbar-offset: calc(var(--header-height));
+  }
+
+  .top-toolbar {
+    height: calc(var(--header-height) + var(--submenu-height) + 30px);
+  }
+
+  .page-content {
+    padding-top: calc(var(--submenu-height) + 6px);
+  }
+
+  .container,
+  .header > div {
+    max-width: 720px !important;
+  }
+
+  .normal-btn,
+  .medium-btn {
+    padding: 6px 40px 6px 40px !important;
+    min-height: 45px;
+    border-radius: 10px;
+  }
+
+  .medium-btn {
+    padding: 12px 20px !important;
+  }
+
+  .small-btn {
+    min-width: 120px;
+    min-height: 35px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+  }
+
+  .nav-btn.button {
+    min-width: 0px;
+    font-size: 16px;
+  }
+
+  .profile-wrapper .input-wrapper {
+    height: 50px;
+  }
+
+  .profile-wrapper .input-wrapper .title {
+    font-size: 20px;
+    width: 200px;
+  }
+
+  .tab-wrapper .tab-item {
+    max-width: 200px;
+  }
+
+  .sidemenu {
+    max-width: 230px;
+    right: -230px;
+  }
+
+  /* ===================== */
+
+  .logo-icon {
+    height: 70px;
+  }
+
+  .account-left {
+    width: 200px;
+  }
+
+  /* ===================== */
+
+  .banner {
+    height: 320px;
+  }
+
+  .refer-banner-wrapper {
+    .text-title,
+    .text-title.bm {
+      font-size: 48px;
+    }
+
+    .text-content {
+      font-size: 16px;
+    }
+  }
+
+  /*  .horizontal-swiper-wrapper .hot-game-item {
+    height: 180px;
+  } */
+
+  .game-nav {
+    display: flex;
+
+    .gameImg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .product-wrapper .product-item .frame {
+    padding: 5px;
+
+    &::before {
+      background-image: conic-gradient(
+        var(--primary-sub-color) 55%,
+        white 70%,
+        white 85%,
+        var(--primary-sub-color) 100%
+      );
+    }
+  }
+
+  .product-img {
+    height: auto !important;
+  }
+
+  .product-wrapper .game-logo-icon {
+    height: 70px;
+    margin-bottom: 8px;
+  }
+
+  .game-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .lotto-header {
+    height: 80px;
+
+    .small-btn {
+      width: 100% !important;
+    }
+  }
+
+  .youtube-size {
+    iframe {
+      height: 350px;
+    }
+  }
+
+  .video-container .video-content {
+    height: 100px;
+  }
+
+  .footer {
+    flex-direction: row;
+  }
+
+  /* ======== promotion ======== */
+
+  .promotion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+  }
+
+  /* ======== mall ========== */
+  .mall-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .redeem-btn.button {
+    min-width: auto !important;
+    min-height: 35px !important;
+  }
+
+  .checkin-wrapper {
+    .title-margin {
+      margin-top: -36px;
+    }
+
+    .item-inner {
+      .text-title-bg {
+        transform: translate(-50%, -14px);
+      }
+
+      .item-content.lock-img {
+        width: 34px;
+        height: 34px;
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* set container max width */
+@media (min-width: 992px) {
+  .container,
+  .header > div {
+    max-width: 960px !important;
+  }
+
+  /*  .horizontal-swiper-wrapper .hot-game-item {
+    height: 200px;
+  } */
+
+  .promotion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+  }
+
+  .youtube-size {
+    iframe {
+      height: 450px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .header > div {
+    max-width: 1140px !important;
+  }
+
+  .checkin-wrapper {
+    .page-content,
+    .container,
+    .header > div {
+      max-width: 720px !important;
+      margin: auto;
+    }
+  }
+
+  .refer-banner-wrapper {
+    .text-title,
+    .text-title.bm {
+      font-size: 72px;
+    }
+
+    .text-content,
+    .text-content.bm {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .submenu {
+    max-width: 1300px;
+  }
+}

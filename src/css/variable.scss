@@ -1,0 +1,226 @@
+@mixin define-fonts($font-family-label, $font-path, $font-base-name, $font-format: "ttf") {
+
+  $weights: (
+    100: "Thin",
+    200: "ExtraLight",
+    300: "Light",
+    400: "Regular",
+    500: "Medium",
+    600: "SemiBold",
+    700: "Bold",
+    800: "ExtraBold",
+    900: "Black",
+  );
+
+  @each $weight, $name in $weights {
+    @font-face {
+      font-family: #{$font-family-label};
+      src: url("#{$font-path}/#{$font-base-name}-#{$name}.#{$font-format}")
+        format("#{if($font-format == 'ttf', 'truetype', $font-format)}");
+      font-weight: $weight;
+    }
+  }
+}
+
+
+:root {
+  /* override framework7 variables */
+  --f7-font-family:"Main";
+  --f7-tabbar-icons-height: 60px;
+  --f7-tabbar-link-active-icon-bg-color: transparent;
+  --f7-tabbar-label-font-size: 10px;
+
+  --f7-navbar-title-font-size: 18px;
+  --f7-navbar-bg-color: #014545;
+  --f7-navbar-text-color: #fff;
+  --f7-navbar-link-color: #fff;
+  --f7-navbar-height: 60px;
+  --f7-tabbar-link-active-color: #fff;
+  --f7-tabbar-link-inactive-color: #002a2b;
+
+  --f7-button-border-color: var(--primary-sub-color);
+
+  --f7-dialog-bg-color:
+    url("/assets/image/background/deposit_bg.webp")
+    top left / cover no-repeat;
+  --f7-dialog-width: 90vw;
+  --f7-dialog-text-color: #ffffff;
+  --f7-dialog-title-text-color: #ffffff;
+  --f7-input-item-border-radius: 12px;
+
+  --f7-list-item-min-height: 21px;
+
+  --skeleton-color: #e2e2e2;
+  --skeleton-icon-color: rgba(28, 15, 15, 0.25);
+
+  --f7-sheet-height: 400px;
+
+  --f7-button-min-width:40px;
+
+  /* ===================== */
+  --header-height: 55px;
+  --submenu-height: 0px;
+
+  --top-toolbar-height: var(--header-height);
+
+  --border-style: solid;
+  --border-color: white;
+  --divider-vertical-color: #2bad64;
+
+  --marquee-color: #ffffff;
+  --marquee-bg-color: var(--primary-main-color);
+  /* ============================== Custom Color Definitions ==============================
+    - provide color //!primary to senary 
+    - Each color should have a color //!-main.
+    - Variations of the main color should be named //!"-sub", "-sub2", "-sub3", "-sub4".
+    - If gradient color , should named //!"gradient-.
+    - example : //!--gradient-primary-main-color;
+  =======================================================================================*/
+  //!primary:green , secondary:yellow , tertiary:white , quaternary:red , quinary:blue
+  /* custom variables */
+  // --sidemenu-bg: linear-gradient(180deg, #005260 0%, #2bad64 100%);
+
+  --primary-main-color: #EFB357;
+  --primary-sub-color: #FAD494;
+  --primary-sub2-color:#FEF6E3;
+  // --primary-sub3-color: #112524;
+  // --primary-sub4-color: #01343b;
+
+  --secondary-main-color: #854C1D;
+  // --secondary-sub-color: #f7ca3f;
+  // --secondary-sub2-color: #ffc700;
+  // --secondary-sub3-color: #dbae3c;
+  // --secondary-sub4-color: #c38d2e;
+
+  --tertiary-main-color: #ffffff;
+
+  --gradient-primary-main-color:linear-gradient(180deg,var(--primary-main-color),var(--primary-sub-color));
+
+  
+
+  --btn-bg-primary:  linear-gradient(180deg, #EFB357 0%, #FEF6E3 100%);
+  --btn-primary-color:#1a1109;
+
+  --btn-bg-secondary: linear-gradient(
+    180deg,
+    #f7e290 -2.38%,
+    #fcf0a9 22.62%,
+    #f8e492 47.12%,
+    #b6914e 97.62%
+  );
+--btn-secondary-color:#612e0b;
+
+   --btn-outline-primary:  var(--primary-sub-color);
+  --btn-outline-primary-color:var(--primary-sub2-color);
+
+  --btn-bg-disable: linear-gradient(360deg, #626262 0%, #c8c8c8 100%);
+}
+
+// #framework7-root {
+//   .dialog-button {
+//     border-radius: var(--dialog-btn-border-radius);
+//   }
+// }
+
+.ios {
+  --f7-toolbar-bg-color-rgb: 0, 0, 0;
+  --f7-link-highlight-color-rgb: 255, 255, 255;
+  --f7-link-color: black;
+  --f7-link-color-rgb: 0, 0, 0;
+
+  --f7-input-text-color: black;
+  /* Blue input text */
+  --f7-input-placeholder-color: #888888;
+  /* Gray placeholder */
+  --f7-input-bg-color: #f9f9f9;
+  /* Light gray background */
+  --f7-input-border-color: #ccc;
+  /* Light gray border */
+  --f7-input-border-width: 1px;
+  /* Border width */
+  --f7-input-border-radius: 8px;
+  /* Rounded corners */
+  --f7-input-height: 48px;
+
+  --f7-input-padding-left: 18px;
+  --f7-input-padding-right: 18px;
+  /* Height of the input field */
+  --f7-list-item-padding-horizontal: 16px;
+
+  --f7-dialog-bg-color-rgb:transparent,
+
+  /*
+  --f7-navbar-link-color: var(--f7-bars-link-color);
+  --f7-navbar-text-color: var(--f7-bars-text-color);
+  */
+  
+  --f7-navbar-bg-color:#014545,
+  --f7-navbar-height: var(--header-height);
+  --f7-navbar-font-size: 16px;
+  --f7-navbar-title-font-size: inherit;
+  --f7-navbar-inner-padding-left: 8px;
+  --f7-navbar-inner-padding-right: 8px;
+  --f7-navbar-title-font-weight: 600;
+  --f7-navbar-title-margin-left: 0;
+  --f7-navbar-title-margin-right: 0;
+  --f7-navbar-title-text-align: center;
+  --f7-navbar-subtitle-font-size: 10px;
+  --f7-navbar-subtitle-line-height: 1;
+  --f7-navbar-large-title-height: 52px;
+  --f7-navbar-large-title-font-size: 34px;
+  --f7-navbar-large-title-font-weight: 700;
+  --f7-navbar-large-title-letter-spacing: -0.03em;
+  --f7-navbar-large-title-padding-vertical: 6px;
+  --f7-navbar-bg-color: #000;
+  --f7-navbar-bg-color-rgb: 0, 0, 0;
+  --f7-navbar-link-color: #fff;
+
+  /*
+  --f7-navbar-link-height: var(--f7-navbar-height);
+  --f7-navbar-link-line-height: var(--f7-navbar-height);
+  */
+  --f7-navbar-subtitle-text-color: rgba(0, 0, 0, 0.55);
+
+  #framework7-root {
+    .md .item-input .item-content,
+    .md .item-input.item-content {
+      margin: 0 0px 16px 0px;
+      border-radius: 10px;
+    }
+
+    .list input {
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .white-bg-toast {
+      background-color: #ffffff !important;
+      /* White background */
+      color: #000000 !important;
+      /* Black text for contrast */
+      border: 1px solid #cccccc;
+      /* Optional: Add a subtle border */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      /* Optional: Add some shadow */
+    }
+    .date-selector input{
+      background: none;
+      margin-bottom: 0;
+    }
+  }
+}
+
+body {
+  --bs-body-font-family: "Main", sans-serif;
+  font-family: "Main", sans-serif;
+  font-weight: 800;
+  --f7-button-font-weight:800;
+  max-height: 100vh;
+}
+
+/* define font */
+@include define-fonts("Main", "/assets/font/Abhaya_Libre", "AbhayaLibre");
+@include define-fonts("Secondary", "/assets/font/AlibabaPuHuiTi", "AlibabaPuHuiTi","woff2");
+
+
+

@@ -1,0 +1,20 @@
+{
+  "appId": "com.nineStars.club",
+  "appName": "label1landing",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "CapacitorUpdater": {
+      "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEAx90Y0dLvPsIcDWad9txuu5R3rVvzoIzm9CIeGDKMmRJXsoCw\nyow+8nLpKDhEbOK2gyEg3wcBL55pNgjN0BhtcGnC/g5sZpEX9e0M9Dd1jw11PVmL\nMmQcAJkXCdGt6/6U0thQMJ43XaFdXUh/nd9Sd5wm+teA0u2IFKY/QIFMf79jCfbR\nefVMPjE7/eW3CeaWkT3fuu7uLqb2k0o0EaACv2NgfVoXx28Gnj6IjFKg4EPYfODn\nmABWqQeEIg1mqgt9Z4n18iu8Wk56/L6t7Vba9GUbNnoVumVftpEApUB6FEoFpSef\ng1dgEmVSwq8OHm/Aze4A53kO3p1O9L/OuzFsEQIDAQABAoIBAAhh0WD46U3i8Q9e\nkbLNDkOVk6KYlfZSfHvqC6QxCAiiLl2DFE8NXFU5nKXSPMvqgvQrTTQvWHVTXecd\nTcjrwli95ca3CwSu8n/e1w2NvyNekY9+8DWfAVXk1cSUl7hLXTldxzivxQOLMUXI\nlOoVh/FSYifgZoOqILw5d/MEDTXZCVSeKiq2Nmh+rm1Z/stYvGdJ7vUT/7DWOulV\ncqWjl+hCFBP+JFeeJTrxQWmNWJbBv10vVipMdeKKlLPP5XAduf9qCE3/x+p7LEBf\nsmTKLLH6zvjh0zpQLq/SjmMy+0G5bZTK0lTTILEbDMwNQvTYIaTrTaGcm0aN/Iwz\njNDJLQECgYEA/a1AEbrI4JXuKNTUl7cHpDYG7ItM517Cz5KzwP6WTKGRCNp+ElBS\nYYLV9kegWwzKHS94LsBp7H1eVBvPDXmd5dwvQ9oHxAK8XYMaSeHRKUAGtniI06Co\nKtBUB589Jr6Uw6WpcuIlDy3i8nBWM7ks2i0PFufvj68IS+/+oMdhBxECgYEAybGu\nT5JWiZ4FG/50+M1LU4WaP66EM+UyzZaRM1dhSBX81EkF9g+45plr/wJf17y027Qr\ngKYeZKDqSXSlQYlQhBgb0tL4dt7/xWtBxBc0dF0UQMiyFPSpEi5en4cJAV1LGMZd\n2WVUPZRPn83lqXVTV1KWBBdM64V0pdyJznJ8FQECgYEAqOpPKj8c+Wb8cdXeRbPL\nc83B6IqNR9cykzNVXGJpxFclEyciIaG4aVPMkzR4k4g9oRd1yHO5VI7aW9k0kv1z\nZZarJlwtJZjIwt/EhoPGWdhXX/N88KYetHuKKJUhDAaFWo2Z+nSZRrVAVDz3OXPJ\naPHuBUulmiBrvtzsyTRZ6HECgYAJjkqE6JkDAiKZ1e9yzj8wYNcTB1CqKMTEasrM\nVOp+ANSuthr7Mnl/K2urdFBYJ0+mTR32hWhROjJ/cnBV74yKBZ5j2az97MjPcKp4\nAOVyUeqguyF8zq6n9txy0HIDx4jETrmpkBxyonE3UAj+g1mEfJww622whu0k4pMA\n3fm1AQKBgQCWmKYJpqDVapA1qY/+mSqumwheZbxhr+6Oa1ODRWtuYb5sPbBB/2mj\nJqUo+8elN759rXwbwsL9XRChYRyft4ZVpKQG1aV5eBUS4z7L2ObIPFLigPty8u9i\nLdw1RckJRILsM/EzneLqofVq0s5wH6KAgb/9yxPrCJFzzfUCZIwpAw==\n-----END RSA PRIVATE KEY-----\n",
+      "autoDeletePrevious": "true",
+      "autoDeleteFailed": "true",
+      "resetWhenUpdate": "true",
+      "autoUpdate": "false",
+      "directUpdate": "true",
+      "appReadyTimeout": "100000"
+    },
+    "ScreenOrientation": {
+      "orientation": "portrait"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "cwd": "/Volumes/Awesome/Projects/Framework7",
+  "type": ["web"],
+  "name": "label1landing",
+  "framework": "react",
+  "template": "tabs",
+  "cssPreProcessor": "scss",
+  "bundler": "vite",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}

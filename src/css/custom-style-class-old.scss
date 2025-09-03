@@ -1,0 +1,74 @@
+@use "sass:map";
+
+/* ========================== Variables ========================== */
+/* Color Names and Subtypes */
+$color-names: (
+  "primary",
+  "secondary",
+  "tertiary",
+  "quaternary",
+  "quinary",
+  /*   
+  "senary",
+  "septenary",
+  "octonary",
+  "nonary",
+  "denary" 
+  */
+);
+$color-type: ("", "gradient-");
+$sub-types: ("main", "sub", "sub2", "sub3", "sub4");
+
+/* Additional Static Color Definitions */
+$text-color-list: ();
+
+$bg-color-list: ();
+/* ========================== Functions & Mixins ========================== */
+
+/* Mixin to dynamically generate color classes */
+@mixin define-colors($colors, $prefix, $property) {
+  @each $name, $value in $colors {
+    .#{$prefix}-#{$name} {
+      #{$property}: #{$value};
+    }
+  }
+}
+
+/* Function to dynamically create color map */
+@function generate-color-map($color-names, $color-type, $sub-types) {
+  $color-map: ();
+
+  @each $color in $color-names {
+    @each $type in $color-type {
+      @each $sub in $sub-types {
+        $color-map: map.merge(
+          $color-map,
+          (
+            "#{$type}#{$color}-#{$sub}":
+              "var(--#{$type}#{$color}-#{$sub}-color) !important",
+          )
+        );
+      }
+    }
+  }
+
+  @return $color-map;
+}
+
+/* ========================== Data Execution ========================== */
+/* Generate dynamic text and background color maps */
+$text-color-list: map.merge(
+  $text-color-list,
+  generate-color-map($color-names, "", $sub-types)
+);
+$bg-color-list: map.merge(
+  $bg-color-list,
+  generate-color-map($color-names, $color-type, $sub-types)
+);
+
+/* ========================== Apply Styles ========================== */
+
+@include define-colors($text-color-list, "border", "--border-color");
+@include define-colors($text-color-list, "text", "color");
+@include define-colors($bg-color-list, "bg", "background");
+/* some Custom Styles classes */
