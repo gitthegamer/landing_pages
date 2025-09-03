@@ -107,7 +107,7 @@ const MyApp = () => {
   return (
     <>
       <Helmet>
-        <title>{t(globalSettings?.meta_title || "Landing Page")}</title>
+        <title>{t(globalSettings?.meta_title || "The Gamer")}</title>
         <meta
           name="description"
           content={globalSettings?.meta_description || "description"}
