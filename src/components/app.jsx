@@ -24,6 +24,8 @@ import LanguageState from "../atoms/LanguageState";
 import { useRecoilState } from "recoil";
 import { Helmet } from "react-helmet";
 import { useDialog } from "./action/Dialog";
+import ReactPixel from "react-facebook-pixel";
+
 const MyApp = () => {
   const { i18n, t } = useTranslation();
   const { token, isLoading } = useTokenAndUser();
@@ -91,6 +93,16 @@ const MyApp = () => {
   /* =========================================================== */
 
   const [globalSettings, setGlobalSettings] = useState(null);
+
+  const pixelId = "1764494520867476";
+
+  useEffect(() => {
+    if (!pixelId) return;
+
+    // 初始化 Pixel
+    ReactPixel.init(pixelId);
+    ReactPixel.pageView(); // 记录 PageView
+  }, [pixelId]);
 
   return (
     <>
