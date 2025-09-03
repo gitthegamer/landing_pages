@@ -349,7 +349,7 @@ export default function DepositPageNew() {
               <div>
                 {/* LOGO */}
                 <div className="d-flex-center flex-column pt-4">
-                  <img className="col-4" src="assets/image/logo/logo.webp" />
+                  <img className="col-4" src="/assets/image/logo/logo.webp" />
                   <div className="text40 text-primary-sub2 lh-sm">
                     {t("Deposit")}
                   </div>

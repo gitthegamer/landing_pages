@@ -70,6 +70,22 @@ const MyApp = () => {
 
   //Global will fecth when language change
 
+  useEffect(() => {
+    const fetchGlobal = async () => {
+      const res = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ status: true }); // 模拟返回结果
+        }, 5000);
+      });
+
+      if (res?.status) {
+        window.__APP_READY__ = true;
+      }
+    };
+
+    fetchGlobal();
+  }, [i18n.language]);
+
   const router = createBrowserRouter(routes);
 
   useEffect(() => {
@@ -110,15 +126,19 @@ const MyApp = () => {
         <title>{t(globalSettings?.meta_title || "The Gamer")}</title>
         <meta
           name="description"
-          content={globalSettings?.meta_description || "description"}
+          content={
+            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+          }
         />
         <meta
           property="og:title"
-          content={globalSettings?.meta_title || "label1landing"}
+          content={globalSettings?.meta_title || "The Gamer"}
         />
         <meta
           property="og:description"
-          content={globalSettings?.meta_description}
+          content={
+            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+          }
         />
         <meta
           property="og:image"
@@ -126,7 +146,7 @@ const MyApp = () => {
         />
         <link rel="apple-touch-icon" href="/assets/image/logo/logo.webp" />
         <link rel="icon" href="/assets/image/logo/logo.webp" />
-        <link rel="canonical" href={window.location.href} />
+        <link rel="canonical" href={"https://777s.live/"} />
       </Helmet>
       <Suspense fallback={<div>Loading...</div>}>
         <RouterProvider router={router} />
