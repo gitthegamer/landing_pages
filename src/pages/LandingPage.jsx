@@ -14,7 +14,7 @@ const LandingPage = () => {
               <div className="position-relative col-9 ">
                 <img className="w-100" src="/assets/image/others/btn.gif" />
                 <Button
-                  // onClick={() => navigate("/deposit")}
+                  onClick={() => window.open("http://t.me/TheGamer_77")}
                   className="position-absolute start-0 top-0 w-100 h-100 d-flex-center "
                 ></Button>
               </div>
