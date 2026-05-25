@@ -1,29 +1,127 @@
-let navigateFn = null; // Used to store the function returned by useNavigate
+let navigateFn = null;
+
+export const HEADER_SCROLL_OFFSET = 110;
+
+export function getHeaderScrollOffset() {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(
+    "--ednex-fixed-header-height"
+  );
+  const height = parseInt(raw, 10);
+  return Number.isFinite(height) && height > 0 ? height + 8 : HEADER_SCROLL_OFFSET;
+}
 
 /**
- * Initialize navigateFn
- * @param {Function} navigate - The navigate function from React Router
+ * Scroll container for the EDNEX landing page (document scroll, not F7 trap).
+ */
+export function getEdnexScrollRoot() {
+  return document.scrollingElement || document.documentElement;
+}
+
+/**
+ * Scroll to a landing-page section by id (matches HTML hash navigation).
+ * @param {string} sectionId - e.g. "about" or "#about"
+ */
+export function scrollToSection(sectionId) {
+  const id = String(sectionId).replace(/^#/, "");
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  const scrollRoot = getEdnexScrollRoot();
+  const offset = getHeaderScrollOffset();
+
+  const isDocumentScroll =
+    scrollRoot === document.scrollingElement ||
+    scrollRoot === document.documentElement ||
+    scrollRoot === document.body;
+
+  if (isDocumentScroll) {
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  } else {
+    const parentTop = scrollRoot.getBoundingClientRect().top;
+    const targetTop = target.getBoundingClientRect().top;
+    const top = scrollRoot.scrollTop + (targetTop - parentTop) - offset;
+    scrollRoot.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  const hash = `#${id}`;
+  if (window.location.hash !== hash) {
+    window.history.pushState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}${hash}`
+    );
+  }
+}
+
+/**
+ * Initialize navigateFn from React Router useNavigate.
  */
 export const setNavigate = (navigate) => {
   navigateFn = navigate;
 };
 
 /**
- * Global navigation function
- * @param {string | number} path - Target path or -1 (go back to the previous page)
+ * Global navigation — routes, back, and in-page section hashes (EDNEX header).
+ * @param {string | number} path - Route path, "#section", "/#section", or -1
  */
 export default function navigate(path) {
-  if (!navigateFn) {
-    throw new Error(
-      "Navigate function is not initialized. Did you call setNavigate?"
-    );
-  }
-  const queryParams = window.location.search;
-  const hash = window.location.hash;
+  const pathStr = String(path);
 
-  if (String(path) === "-1") {
-    navigateFn(-1, { state: queryParams });
-  } else {
-    navigateFn(`${path}${queryParams || ""}${hash || ""}`);
+  if (pathStr.startsWith("#")) {
+    if (!navigateFn) {
+      scrollToSection(pathStr);
+      return;
+    }
+    const onHome =
+      window.location.pathname === "/" || window.location.pathname === "";
+    if (onHome) {
+      scrollToSection(pathStr);
+      return;
+    }
+    navigateFn(`/${window.location.search}${pathStr}`);
+    window.setTimeout(() => scrollToSection(pathStr), 200);
+    return;
   }
+
+  const hashIndex = pathStr.indexOf("#");
+  if (hashIndex !== -1) {
+    const routePath = pathStr.slice(0, hashIndex) || "/";
+    const hash = pathStr.slice(hashIndex);
+    const onTargetRoute =
+      routePath === window.location.pathname ||
+      (routePath === "/" &&
+        (window.location.pathname === "/" || window.location.pathname === ""));
+
+    if (!navigateFn) {
+      scrollToSection(hash);
+      return;
+    }
+
+    if (onTargetRoute) {
+      scrollToSection(hash);
+      return;
+    }
+
+    navigateFn(`${routePath}${window.location.search}${hash}`);
+    window.setTimeout(() => scrollToSection(hash), 200);
+    return;
+  }
+
+  if (!navigateFn) {
+    if (pathStr === "-1") {
+      window.history.back();
+      return;
+    }
+    window.location.href = pathStr;
+    return;
+  }
+
+  if (pathStr === "-1") {
+    navigateFn(-1);
+    return;
+  }
+
+  const queryParams = window.location.search;
+  navigateFn(`${pathStr}${queryParams}`);
 }

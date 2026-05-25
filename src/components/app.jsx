@@ -123,21 +123,29 @@ const MyApp = () => {
   return (
     <>
       <Helmet>
-        <title>{t(globalSettings?.meta_title || "The Gamer")}</title>
+        <title>
+          {globalSettings?.meta_title ||
+            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist Malaysia"}
+        </title>
         <meta
           name="description"
           content={
-            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+            globalSettings?.meta_description ||
+            "EDNEX SDN.BHD. — leading supplier and distributor of heavy truck parts in Malaysia. Engines, gearboxes, axles, and precision components for Volvo, Scania, Mercedes-Benz, and more."
           }
         />
         <meta
           property="og:title"
-          content={globalSettings?.meta_title || "The Gamer"}
+          content={
+            globalSettings?.meta_title ||
+            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist"
+          }
         />
         <meta
           property="og:description"
           content={
-            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+            globalSettings?.meta_description ||
+            "Heavy transport parts specialist in Johor, Malaysia. Nationwide delivery across all 13 states."
           }
         />
         <meta
@@ -155,7 +163,6 @@ const MyApp = () => {
       {/* ================== Popup ================== */}
       <ConfirmMessage />
       <LoginModal />
-      <DialogApp />
       {/* =========================================== */}
     </>
   );

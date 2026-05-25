@@ -1,0 +1,1225 @@
+/* EDNEX SDN.BHD. — corporate landing (from ednex_sunenghup_style.html) */
+
+.ednex-site {
+  font-family: var(--ednex-font-body);
+  background: var(--ednex-white);
+  color: var(--ednex-dark);
+  overflow-x: hidden;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    vertical-align: top;
+  }
+}
+
+/* Fixed site header (topbar + nav) — sticky breaks inside Framework7 .page */
+.ednex-site-header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 500;
+  pointer-events: auto;
+  background: var(--ednex-white);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ednex-header-spacer {
+  height: var(--ednex-fixed-header-height, 108px);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* ══ TOP BAR ══ */
+.ednex-topbar {
+  background: var(--ednex-darker);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 0;
+  font-size: 12px;
+}
+
+.ednex-topbar-inner {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ednex-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ednex-topbar a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--ednex-gold);
+  }
+}
+
+.ednex-topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--ednex-gold);
+    flex-shrink: 0;
+  }
+}
+
+/* ══ HEADER ══ */
+.ednex-header {
+  background: var(--ednex-white);
+  position: relative;
+  z-index: 1;
+}
+
+.ednex-header-inner {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.ednex-site-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.ednex-logo-icon svg {
+  display: block;
+}
+
+.ednex-logo-texts {
+  line-height: 1.2;
+}
+
+.ednex-logo-name {
+  font-family: var(--ednex-font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ednex-darker);
+  letter-spacing: 1px;
+}
+
+.ednex-logo-tagline {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--ednex-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.ednex-main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li > a {
+    display: block;
+    padding: 0 16px;
+    line-height: 72px;
+    font-family: var(--ednex-font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ednex-darker);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 3px;
+      background: var(--ednex-gold);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+
+    &:hover {
+      color: var(--ednex-gold2);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  > li.active > a {
+    color: var(--ednex-gold2);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.ednex-header-phone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ednex-font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ednex-darker);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--ednex-gold);
+  }
+
+  a {
+    color: var(--ednex-gold2);
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+
+/* ══ HERO SLIDER ══ */
+.ednex-hero-slider {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  background: var(--ednex-darker);
+}
+
+.ednex-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.ednex-slide-bg {
+  position: absolute;
+  inset: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.35);
+  }
+}
+
+.ednex-slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.ednex-slide-eyebrow {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ednex-gold);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.ednex-slide-h1 {
+  font-family: var(--ednex-font-heading);
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 300;
+  color: var(--ednex-white);
+  line-height: 1.15;
+  margin-bottom: 8px;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.ednex-slide-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ednex-btn-hero {
+  display: inline-block;
+  padding: 12px 32px;
+  font-family: var(--ednex-font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.ednex-btn-hero-gold {
+  background: var(--ednex-gold);
+  color: var(--ednex-darker);
+
+  &:hover {
+    background: var(--ednex-gold2);
+  }
+}
+
+.ednex-btn-hero-outline {
+  background: transparent;
+  color: var(--ednex-white);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    border-color: var(--ednex-gold);
+    color: var(--ednex-gold);
+  }
+}
+
+.ednex-slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.ednex-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  padding: 0;
+
+  &.active {
+    background: var(--ednex-gold);
+  }
+}
+
+.ednex-slider-arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ednex-slider-arrow {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--ednex-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: all;
+  transition: background 0.2s;
+  border-radius: 0;
+  font-size: 20px;
+
+  &:hover {
+    background: var(--ednex-gold);
+  }
+
+  &.prev {
+    left: 20px;
+  }
+
+  &.next {
+    right: 20px;
+  }
+}
+
+/* ══ SECTION COMMON ══ */
+.ednex-section-wrap {
+  padding: 60px 0;
+
+  &.grey {
+    background: var(--ednex-light);
+  }
+
+  &.dark {
+    background: var(--ednex-darker);
+  }
+}
+
+.ednex-container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ednex-section-title-wrap {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.ednex-section-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ednex-gold2);
+  margin-bottom: 10px;
+}
+
+.ednex-section-title {
+  font-family: var(--ednex-font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  color: var(--ednex-darker);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 16px;
+  margin: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--ednex-gold);
+  }
+
+  &.left {
+    display: block;
+    text-align: left;
+
+    &::after {
+      left: 0;
+      transform: none;
+    }
+  }
+
+  &.white {
+    color: var(--ednex-white);
+  }
+}
+
+.ednex-btn-main {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--ednex-gold);
+  color: var(--ednex-darker);
+  font-family: var(--ednex-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background: var(--ednex-gold2);
+  }
+
+  &.full-width {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.ednex-btn-outline-dark {
+  display: inline-block;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--ednex-darker);
+  border: 2px solid var(--ednex-darker);
+  font-family: var(--ednex-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--ednex-gold);
+    border-color: var(--ednex-gold);
+    color: var(--ednex-darker);
+  }
+}
+
+/* ══ ABOUT ══ */
+.ednex-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.ednex-about-img {
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.ednex-about-img-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: var(--ednex-gold);
+  color: var(--ednex-darker);
+  padding: 20px 24px;
+  text-align: center;
+  font-family: var(--ednex-font-heading);
+}
+
+.ednex-about-img-badge-num {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ednex-about-img-badge-txt {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.ednex-about-content {
+  p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--ednex-muted);
+    margin-bottom: 14px;
+  }
+
+  strong {
+    color: var(--ednex-darker);
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+.ednex-about-points {
+  list-style: none;
+  margin: 18px 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ednex-darker);
+
+    &::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--ednex-gold);
+      flex-shrink: 0;
+    }
+  }
+}
+
+/* ══ STATS BAR ══ */
+.ednex-stats-bar {
+  background: var(--ednex-gold);
+  padding: 36px 0;
+}
+
+.ednex-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ednex-stat-item {
+  text-align: center;
+  padding: 0 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.ednex-stat-num {
+  font-family: var(--ednex-font-heading);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--ednex-darker);
+  line-height: 1;
+}
+
+.ednex-stat-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 6px;
+}
+
+/* ══ PARTS RANGE ══ */
+.ednex-parts-bg {
+  background: var(--ednex-darker);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(253,184,25,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+}
+
+.ednex-parts-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.ednex-parts-content {
+  p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+  }
+
+  .ednex-section-eyebrow {
+    color: var(--ednex-gold);
+  }
+}
+
+.ednex-parts-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 8px;
+}
+
+.ednex-parts-list-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--ednex-font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, color 0.2s;
+
+  &::before {
+    content: "›";
+    color: var(--ednex-gold);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &:hover {
+    background: rgba(253, 184, 25, 0.08);
+    color: var(--ednex-gold);
+  }
+
+  &:nth-child(even) {
+    border-right: none;
+  }
+}
+
+.ednex-brands-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ednex-brand-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  font-family: var(--ednex-font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 1px;
+}
+
+/* ══ SERVICES ══ */
+.ednex-svc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.ednex-svc-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+
+  &:nth-child(2) .ednex-svc-img {
+    order: 2;
+  }
+
+  &:nth-child(2) .ednex-svc-body {
+    order: 1;
+  }
+}
+
+.ednex-svc-img img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+}
+
+.ednex-svc-body {
+  padding: 40px 36px;
+  background: var(--ednex-white);
+  border: 1px solid var(--ednex-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ednex-svc-num {
+  font-family: var(--ednex-font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ednex-gold2);
+  margin-bottom: 14px;
+}
+
+.ednex-svc-title {
+  font-family: var(--ednex-font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ednex-darker);
+  margin-bottom: 14px;
+}
+
+.ednex-svc-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ednex-muted);
+  margin-bottom: 22px;
+}
+
+/* ══ WHY US ══ */
+.ednex-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ednex-why-card {
+  background: var(--ednex-white);
+  border: 1px solid var(--ednex-border);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--ednex-gold);
+  }
+}
+
+.ednex-why-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(253, 184, 25, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.ednex-why-title {
+  font-family: var(--ednex-font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ednex-darker);
+  margin-bottom: 10px;
+}
+
+.ednex-why-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ednex-muted);
+  margin: 0;
+}
+
+/* ══ GALLERY ══ */
+.ednex-gal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 4px;
+}
+
+.ednex-gal-item {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  &:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: filter 0.4s, transform 0.5s;
+  }
+
+  &:hover img {
+    filter: brightness(1);
+    transform: scale(1.05);
+  }
+}
+
+.ednex-gal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(253, 184, 25, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  pointer-events: none;
+}
+
+.ednex-gal-item:hover .ednex-gal-overlay {
+  background: rgba(253, 184, 25, 0.15);
+}
+
+/* ══ CONTACT ══ */
+.ednex-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.ednex-contact-info {
+  h3 {
+    font-family: var(--ednex-font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ednex-darker);
+    margin-bottom: 20px;
+  }
+
+  > p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ednex-muted);
+    margin-bottom: 24px;
+  }
+}
+
+.ednex-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ednex-cd-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ednex-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.ednex-cd-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  background: var(--ednex-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.ednex-cd-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ednex-muted);
+  margin-bottom: 2px;
+}
+
+.ednex-cd-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ednex-darker);
+
+  a {
+    color: var(--ednex-gold2);
+    text-decoration: none;
+  }
+}
+
+.ednex-contact-form {
+  background: var(--ednex-light);
+  padding: 36px;
+
+  h3 {
+    font-family: var(--ednex-font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ednex-darker);
+    margin-bottom: 22px;
+  }
+}
+
+.ednex-cf-group {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ednex-muted);
+    margin-bottom: 6px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--ednex-white);
+    border: 1px solid var(--ednex-border);
+    font-family: var(--ednex-font-body);
+    font-size: 13px;
+    color: var(--ednex-darker);
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: var(--ednex-gold);
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+}
+
+.ednex-cf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ══ FOOTER ══ */
+.ednex-footer {
+  background: #111;
+  color: rgba(255, 255, 255, 0.65);
+
+  .ednex-logo-name {
+    color: white;
+  }
+
+  .ednex-logo-tagline {
+    color: var(--ednex-gold);
+  }
+}
+
+.ednex-footer-main {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ednex-footer-brand-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ednex-footer-col h4 {
+  font-family: var(--ednex-font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ednex-gold);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ednex-footer-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+
+  a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--ednex-gold);
+    }
+  }
+
+  li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.ednex-footer-bottom {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ednex-footer-copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* WA FLOAT */
+.ednex-wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 400;
+  width: 54px;
+  height: 54px;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    fill: white;
+  }
+}
+
+/* Document scroll — override Framework7 viewport trap (see useEdnexDocumentScroll.js) */
+html.ednex-landing,
+html.ednex-landing body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+html.ednex-landing #app,
+html.ednex-landing #framework7-root,
+html.ednex-landing .views,
+html.ednex-landing .view,
+html.ednex-landing .pages,
+html.ednex-landing .ednex-layout {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+html.ednex-landing .ednex-page.page {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+html.ednex-landing .ednex-page .page-content {
+  background: var(--ednex-white) !important;
+  color: var(--ednex-dark);
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding-top: 0 !important;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --ednex-fixed-header-height: 128px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ednex-main-nav,
+  .ednex-header-phone {
+    display: none;
+  }
+
+  .ednex-hero-slider {
+    height: 380px;
+  }
+
+  .ednex-about-grid,
+  .ednex-parts-grid-layout,
+  .ednex-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ednex-svc-card {
+    grid-template-columns: 1fr;
+
+    &:nth-child(2) .ednex-svc-img,
+    &:nth-child(2) .ednex-svc-body {
+      order: 0;
+    }
+  }
+
+  .ednex-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ednex-gal-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+
+    .ednex-gal-item:first-child {
+      grid-column: span 2;
+    }
+  }
+
+  .ednex-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ednex-stat-item {
+    border-right: none;
+    padding: 16px;
+  }
+
+  .ednex-footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ednex-parts-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ednex-about-img-badge {
+    right: 0;
+    bottom: 0;
+  }
+
+  .ednex-cf-row {
+    grid-template-columns: 1fr;
+  }
+}
