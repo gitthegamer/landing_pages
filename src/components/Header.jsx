@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import EdnexLogo from "./ednex/EdnexLogo";
 import navigate, {
   scrollToSection,
   getHeaderScrollOffset,
@@ -10,11 +9,19 @@ const SECTION_IDS = EDNEX_NAV.map((n) => n.id);
 
 function Header() {
   const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   const handleNavClick = useCallback((e, sectionId) => {
     e.preventDefault();
     navigate(`#${sectionId}`);
     setActive(sectionId);
+    setMenuOpen(false);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((open) => !open);
   }, []);
 
   useEffect(() => {
@@ -67,6 +74,30 @@ function Header() {
       requestAnimationFrame(() => scrollToSection(hash));
     }
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeMenu();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen, closeMenu]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 900) closeMenu();
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [closeMenu]);
 
   return (
     <>
@@ -128,9 +159,61 @@ function Header() {
                 {EDNEX_CONTACT.phone}
               </a>
             </div>
+            <button
+              type="button"
+              className={`ednex-menu-toggle${menuOpen ? " is-open" : ""}`}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="ednex-mobile-nav"
+              onClick={toggleMenu}
+            >
+              <span className="ednex-menu-toggle-bar" />
+              <span className="ednex-menu-toggle-bar" />
+              <span className="ednex-menu-toggle-bar" />
+            </button>
           </div>
         </header>
       </div>
+
+      <div
+        className={`ednex-mobile-nav-backdrop${menuOpen ? " is-open" : ""}`}
+        onClick={closeMenu}
+        aria-hidden={!menuOpen}
+      />
+
+      <nav
+        id="ednex-mobile-nav"
+        className={`ednex-mobile-nav${menuOpen ? " is-open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <ul className="ednex-mobile-nav-list">
+          {EDNEX_NAV.map((item) => (
+            <li
+              key={item.id}
+              className={active === item.id ? "active" : ""}
+            >
+              <a
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="ednex-mobile-nav-phone">
+          <svg viewBox="0 0 24 24" aria-hidden>
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+          <div>
+            <span className="ednex-mobile-nav-phone-label">Hotline</span>
+            <a href={`tel:${EDNEX_CONTACT.phoneTel}`}>
+              {EDNEX_CONTACT.phone}
+            </a>
+          </div>
+        </div>
+      </nav>
+
       <div className="ednex-header-spacer" aria-hidden="true" />
     </>
   );
