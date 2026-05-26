@@ -90,7 +90,7 @@ export const EDNEX_SERVICES = [
     image: "/assets/image/ednex/svc-1.jpg",
     num: "Service — 01",
     title: "Parts Supply & Distribution",
-    desc: "We provide nationwide supply and distribution of heavy truck parts across Malaysia, ranging from complete engine assemblies and axle units to individual precision components. Our service is supported by efficient logistics, ensuring fast delivery and competitive pricing.",
+    desc: "We provide reliable nationwide supply and distribution of heavy commercial vehicle parts across Malaysia. Our range includes engines, transmissions, axles, chassis components, and precision spare parts for all major brands. With strict quality control, efficient inventory management, and a strong logistics network, we ensure consistent availability, competitive pricing, and timely delivery to support your operations.",
     cta: "Enquire Now",
     reverse: false,
   },
@@ -98,10 +98,10 @@ export const EDNEX_SERVICES = [
     image: "/assets/image/ednex/svc-2.jpg",
     num: "Service — 02",
     title: "Technical Consultation",
-    desc: "Our experienced team offers professional guidance to help you identify the correct parts based on your vehicle’s make, model, and engine specifications. An initial consultation is provided on a complimentary basis.",
-    cta: "Speak to Our Team",
+    desc: "Our experienced specialists offer professional consultation to accurately identify and recommend the right parts based on your vehicle specifications and operating requirements. We provide expert guidance on component selection, compatibility, repairs, and maintenance, ensuring optimal performance. Initial consultation is provided free of charge to support informed and cost-effective decisions.",
+    cta: "Contact Us",
     reverse: true,
-  },
+  }
 ];
 
 export const EDNEX_WHY = [
