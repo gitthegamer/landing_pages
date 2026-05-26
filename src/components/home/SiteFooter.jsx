@@ -72,7 +72,7 @@ export default function SiteFooter() {
                 {EDNEX_CONTACT.email}
               </a>
             </li>
-            <li>🕒 Mon–Sat: 8AM–6PM</li>
+            <li>🕒 {EDNEX_CONTACT.hours}</li>
           </ul>
         </div>
       </div>

@@ -3,10 +3,10 @@ export const EDNEX_CONTACT = {
     "LG1-2, Seri Gembira Avenue, No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur",
   email: "ednex888@gmail.com",
   hours: "Mon – Sat: 9:00 AM – 6:00 PM",
-  phone: "+60 7-XXX XXXX",
-  phoneTel: "+607XXXXXXX",
-  whatsapp: "+60 1X-XXXXXXX",
-  whatsappLink: "https://wa.me/60123456789",
+  phone: "+60 3-7890 2530",
+  phoneTel: "+60378902530",
+  whatsapp: "+60 17-693 1955",
+  whatsappLink: "https://wa.me/60176931955",
 };
 
 export const EDNEX_NAV = [
