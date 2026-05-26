@@ -8,7 +8,7 @@ export default function ContactSection() {
     e.preventDefault();
     setFormSent(true);
     window.alert(
-      "Thank you! Our team will contact you within 1 business hour."
+      "Thank you! Our team will contact you within 1 business hour.",
     );
   };
 
@@ -23,9 +23,9 @@ export default function ContactSection() {
           <div className="ednex-contact-info">
             <h3>EDNEX SDN.BHD.</h3>
             <p>
-              Our sales consultants are available to assist with parts enquiries, bulk
-              quotations, and delivery arrangements. We respond to all enquiries within
-              one business hour.
+              Our sales consultants are readily available to assist with parts
+              enquiries, bulk quotations, and delivery coordination. All
+              enquiries are responded to within one business hour.
             </p>
             <div className="ednex-contact-details">
               <div className="ednex-cd-row">
@@ -51,7 +51,9 @@ export default function ContactSection() {
                 <div>
                   <div className="ednex-cd-label">WhatsApp</div>
                   <div className="ednex-cd-value">
-                    <a href={EDNEX_CONTACT.whatsappLink}>{EDNEX_CONTACT.whatsapp}</a>
+                    <a href={EDNEX_CONTACT.whatsappLink}>
+                      {EDNEX_CONTACT.whatsapp}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -82,7 +84,12 @@ export default function ContactSection() {
             <div className="ednex-cf-row">
               <div className="ednex-cf-group">
                 <label htmlFor="cf-name">Full Name</label>
-                <input id="cf-name" type="text" placeholder="Your name" required />
+                <input
+                  id="cf-name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
               </div>
               <div className="ednex-cf-group">
                 <label htmlFor="cf-company">Company</label>
@@ -91,7 +98,12 @@ export default function ContactSection() {
             </div>
             <div className="ednex-cf-group">
               <label htmlFor="cf-phone">Phone / WhatsApp</label>
-              <input id="cf-phone" type="tel" placeholder="+60 1X-XXXXXXX" required />
+              <input
+                id="cf-phone"
+                type="tel"
+                placeholder="+60 1X-XXXXXXX"
+                required
+              />
             </div>
             <div className="ednex-cf-group">
               <label htmlFor="cf-parts">Parts Required</label>
@@ -111,7 +123,7 @@ export default function ContactSection() {
                 placeholder="Describe your requirements — part numbers, vehicle make/model, quantity, or budget."
               />
             </div>
-            <button type="submit" className="ednex-btn-main full-width">
+            <button type="submit" className="ednex-btn-main full-width text-color-white">
               {formSent ? "ENQUIRY SENT" : "SEND ENQUIRY"}
             </button>
           </form>

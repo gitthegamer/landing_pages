@@ -8,8 +8,8 @@ export default function StatsBar() {
         <div className="ednex-stats-grid">
           {EDNEX_STATS.map((stat) => (
             <div key={stat.lbl} className="ednex-stat-item">
-              <div className="ednex-stat-num">{stat.num}</div>
-              <div className="ednex-stat-lbl">{stat.lbl}</div>
+              <div className="ednex-stat-num text-color-white">{stat.num}</div>
+              <div className="ednex-stat-lbl text-color-white">{stat.lbl}</div>
             </div>
           ))}
         </div>

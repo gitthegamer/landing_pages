@@ -10,19 +10,15 @@ export default function PartsSection() {
       <div className="ednex-container">
         <div className="ednex-parts-grid-layout">
           <div className="ednex-parts-content">
-            <div className="ednex-section-eyebrow">Full Range of Parts</div>
+            <div className="ednex-section-eyebrow">Comprehensive Parts Range</div>
             <h2 className="ednex-section-title left white">
-              HEAVY TRUCK PARTS WE SUPPLY
+            HEAVY TRUCK PARTS WE SUPPLY
             </h2>
             <p>
-              Our extensive warehouse stocks heavy truck parts for all major commercial
-              vehicle brands. From complete engine assemblies to individual precision
-              components — we have everything needed to keep your fleet on the road.
+            Our well-stocked warehouse carries a full range of heavy truck parts for all major commercial vehicle brands. From complete engine assemblies to high-precision individual components, we provide everything required to keep your fleet operating efficiently.
             </p>
             <p>
-              Our experience and knowledge about heavy commercial vehicles is top-match.
-              We beat the competition with the best prices on the market for quality you
-              can rely on.
+            Backed by extensive industry expertise and in-depth knowledge of heavy commercial vehicles, we offer competitive pricing without compromising on quality—ensuring dependable solutions that stand out in the market.
             </p>
             <div className="ednex-parts-list">
               {EDNEX_PARTS.map((part) => (
@@ -43,7 +39,7 @@ export default function PartsSection() {
               ))}
             </div>
             <br />
-            <a className="ednex-btn-main" {...sectionNavProps("contact", onNav)}>
+            <a className="ednex-btn-main text-color-white" {...sectionNavProps("contact", onNav)}>
               Enquire About Parts
             </a>
           </div>

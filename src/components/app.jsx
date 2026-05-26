@@ -145,15 +145,15 @@ const MyApp = () => {
           property="og:description"
           content={
             globalSettings?.meta_description ||
-            "Heavy transport parts specialist in Johor, Malaysia. Nationwide delivery across all 13 states."
+            "Heavy transport parts specialist in LG1-2, Seri Gembira Avenue, No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur. Nationwide delivery across all 13 states."
           }
         />
         <meta
           property="og:image"
           content={globalSettings?.meta_thumbnail || "icons/icon-only.png"}
         />
-        <link rel="apple-touch-icon" href="/assets/image/logo/logo.webp" />
-        <link rel="icon" href="/assets/image/logo/logo.webp" />
+        <link rel="apple-touch-icon" href="/assets/image/logo/logo.png" />
+        <link rel="icon" href="/assets/image/logo/logo.png" />
         <link rel="canonical" href={"https://777s.live/"} />
       </Helmet>
       <Suspense fallback={<div>Loading...</div>}>

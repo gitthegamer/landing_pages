@@ -43,7 +43,7 @@ export default function HeroSlider() {
                 <a
                   key={action.label}
                   href={action.href}
-                  className={`ednex-btn-hero ednex-btn-hero-${action.variant}`}
+                  className={`ednex-btn-hero ednex-btn-hero-${action.variant} text-color-white`}
                   onClick={(e) => handleActionClick(e, action.href)}
                 >
                   {action.label}

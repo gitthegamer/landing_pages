@@ -43,7 +43,7 @@ function ForgotPassword({ onSubmit, forgot_password }) {
     <Block className="no-padding text-color-white">
       <div className="display-flex justify-content-center align-items-center mb-3">
         <img
-          src={"/assets/image/logo/logo.webp"}
+          src={"/assets/image/logo/logo.png"}
           className="logo margin-bottom-16"
         />
       </div>

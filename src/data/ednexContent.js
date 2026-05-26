@@ -1,7 +1,8 @@
 export const EDNEX_CONTACT = {
-  location: "Johor, Malaysia",
-  email: "sales@ednex.com.my",
-  hours: "Mon – Sat: 8:00 AM – 6:00 PM",
+  location:
+    "LG1-2, Seri Gembira Avenue, No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur",
+  email: "ednex888@gmail.com",
+  hours: "Mon – Sat: 9:00 AM – 6:00 PM",
   phone: "+60 7-XXX XXXX",
   phoneTel: "+607XXXXXXX",
   whatsapp: "+60 1X-XXXXXXX",
@@ -21,8 +22,7 @@ export const EDNEX_SLIDES = [
   {
     image: "/assets/image/ednex/hero-1.jpg",
     eyebrow: "EDNEX SDN.BHD.",
-    titleHtml:
-      "<strong>HEAVY TRANSPORT</strong><br>PARTS SPECIALIST",
+    titleHtml: "<strong>HEAVY TRANSPORT</strong><br>PARTS SPECIALIST",
     actions: [
       { label: "Get a Quotation", href: "#contact", variant: "gold" },
       { label: "View Parts Range", href: "#parts", variant: "outline" },
@@ -55,31 +55,32 @@ export const EDNEX_STATS = [
 ];
 
 export const EDNEX_PARTS = [
+  "Clutch Assemblies",
+  "Engine Blocks",
   "Engines & Powertrains",
   "Gearboxes & Transmissions",
   "Axles & Chassis",
   "Cylinder Heads",
   "Torque Converters",
-  "Clutch Assemblies",
-  "Engine Blocks",
-  "Suspension Parts",
   "Cooling Components",
   "Fuel System Parts",
+  "Suspension Parts",
   "Brake System",
   "Differential Units",
 ];
 
 export const EDNEX_BRANDS = [
-  "VOLVO",
-  "SCANIA",
-  "MERCEDES-BENZ",
-  "MAN",
-  "DAF",
   "IVECO",
   "ISUZU",
-  "HINO",
-  "UD TRUCKS",
+  "VOLVO",
   "FUSO",
+  "MAN",
+  "DAF",
+  "HINO",
+  "SCANIA",
+  "MERCEDES-BENZ",
+  "UD TRUCKS",
+
   "FAW",
   "SINOTRUK",
 ];
@@ -89,7 +90,7 @@ export const EDNEX_SERVICES = [
     image: "/assets/image/ednex/svc-1.jpg",
     num: "Service — 01",
     title: "Parts Supply & Distribution",
-    desc: "We supply and distribute heavy truck parts across Malaysia — from complete engine assemblies and axle units to individual precision components. Fast delivery with competitive pricing.",
+    desc: "We provide nationwide supply and distribution of heavy truck parts across Malaysia, ranging from complete engine assemblies and axle units to individual precision components. Our service is supported by efficient logistics, ensuring fast delivery and competitive pricing.",
     cta: "Enquire Now",
     reverse: false,
   },
@@ -97,7 +98,7 @@ export const EDNEX_SERVICES = [
     image: "/assets/image/ednex/svc-2.jpg",
     num: "Service — 02",
     title: "Technical Consultation",
-    desc: "Our experienced team provides professional consultation to identify the correct parts for your vehicle make, model, and engine code. Complimentary initial consultation available.",
+    desc: "Our experienced team offers professional guidance to help you identify the correct parts based on your vehicle’s make, model, and engine specifications. An initial consultation is provided on a complimentary basis.",
     cta: "Speak to Our Team",
     reverse: true,
   },
@@ -105,34 +106,35 @@ export const EDNEX_SERVICES = [
 
 export const EDNEX_WHY = [
   {
-    icon: "⚙️",
-    title: "Expert Consultation",
-    desc: "Specialists identify exact parts for your vehicle make, model, and engine code — reducing costly ordering errors.",
-  },
-  {
-    icon: "🛡️",
-    title: "Verified Quality",
-    desc: "All parts inspected before dispatch to ensure compatibility and performance. We only supply what we stand behind.",
-  },
-  {
     icon: "💰",
     title: "Competitive Pricing",
-    desc: "Market-leading pricing across all categories. No hidden costs — all pricing quoted upfront and confirmed before commitment.",
+    desc: "We offer market-competitive pricing across all product categories, with full transparency—no hidden charges, and all quotations are confirmed upfront.",
   },
   {
     icon: "🚚",
     title: "Nationwide Delivery",
-    desc: "Fast delivery to all 13 states including Sabah and Sarawak via trusted logistics partners.",
+    desc: "Reliable and prompt delivery across all 13 states, including Sabah and Sarawak, through our trusted logistics network.",
+  },
+  {
+    icon: "🛡️",
+    title: "Verified Quality",
+    desc: "Every part is thoroughly inspected prior to dispatch to guarantee compatibility and performance. We only supply products we confidently stand behind.",
+  },
+
+  {
+    icon: "🤝",
+    title: "After-Sales Support",
+    desc: "Our commitment continues beyond the sale, with ongoing support for installation guidance, technical inquiries, and follow-up assistance.",
+  },
+  {
+    icon: "⚙️",
+    title: "Expert Consultation",
+    desc: "Our specialists accurately identify the right parts based on your vehicle’s make, model, and engine specifications—minimizing costly ordering mistakes.",
   },
   {
     icon: "📦",
     title: "Large Inventory",
-    desc: "Over 1,000 parts in stock at any time — from complete engines to individual components ready for immediate dispatch.",
-  },
-  {
-    icon: "🤝",
-    title: "After-Sales Support",
-    desc: "Our team remains available after purchase to assist with fitment queries, technical questions, and follow-up needs.",
+    desc: "With over 1,000 parts readily available, from complete engines to individual components, we ensure fast and efficient order fulfillment.",
   },
 ];
 

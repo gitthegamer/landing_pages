@@ -15,13 +15,13 @@ export default function EdnexLogo({ size = 48, nameClass = "", taglineClass = ""
           <polygon
             points="24,2 44,13 44,35 24,46 4,35 4,13"
             fill="#1a1a1a"
-            stroke="#fdb819"
+            stroke="#d10812"
             strokeWidth="1.5"
           />
           <polygon
             points="24,7 39,16 39,32 24,41 9,32 9,16"
             fill="none"
-            stroke="rgba(253,184,25,0.3)"
+            stroke="rgba(209,8,18,0.3)"
             strokeWidth="0.8"
           />
           <text
@@ -31,7 +31,7 @@ export default function EdnexLogo({ size = 48, nameClass = "", taglineClass = ""
             fontFamily="Rubik, sans-serif"
             fontSize="20"
             fontWeight="700"
-            fill="#fdb819"
+            fill="#d10812"
           >
             E
           </text>
