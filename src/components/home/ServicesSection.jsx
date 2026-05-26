@@ -22,7 +22,10 @@ export default function ServicesSection() {
                 <div className="ednex-svc-num">{svc.num}</div>
                 <div className="ednex-svc-title">{svc.title}</div>
                 <p className="ednex-svc-desc">{svc.desc}</p>
-                <a className="ednex-btn-outline-dark" {...sectionNavProps("contact", onNav)}>
+                <a
+                  className="ednex-btn-outline-dark"
+                  {...sectionNavProps("contact", onNav)}
+                >
                   {svc.cta}
                 </a>
               </div>

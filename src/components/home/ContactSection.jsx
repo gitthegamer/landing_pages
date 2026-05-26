@@ -73,7 +73,7 @@ export default function ContactSection() {
                 <div>
                   <div className="ednex-cd-label">Business Hours</div>
                   <div className="ednex-cd-value">
-                    Monday – Saturday, 8:00 AM – 6:00 PM
+                    Monday – Saturday, 9:00 AM – 6:00 PM
                   </div>
                 </div>
               </div>
@@ -123,7 +123,10 @@ export default function ContactSection() {
                 placeholder="Describe your requirements — part numbers, vehicle make/model, quantity, or budget."
               />
             </div>
-            <button type="submit" className="ednex-btn-main full-width text-color-white">
+            <button
+              type="submit"
+              className="ednex-btn-main full-width text-color-white"
+            >
               {formSent ? "ENQUIRY SENT" : "SEND ENQUIRY"}
             </button>
           </form>
