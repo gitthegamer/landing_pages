@@ -20,7 +20,11 @@ const AskLogin = () => {
         }}
       >
         <div>
-          <img className="logo" src="/assets/image/logo/logo.png" alt="Login" />
+          <img
+            className="logo"
+            src="/assets/image/logo/logo.webp"
+            alt="Login"
+          />
         </div>
         <span className="text-color-white mb-3">
           {t("Please login to continue!")}

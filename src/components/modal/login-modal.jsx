@@ -76,7 +76,7 @@ const LoginModal = () => {
           <div className="container">
             <div className="d-flex-center">
               <img
-                src={"/assets/image/logo/logo.png"}
+                src={"/assets/image/logo/logo.webp"}
                 className="logo mb-3"
                 alt="label1landing"
               />
