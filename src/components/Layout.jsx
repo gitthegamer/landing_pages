@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { setNavigate } from "./action/navigate";
 import { useTranslation } from "react-i18next";
-import { useDialog } from "./action/Dialog";
+import { useDialog } from "./action/Dialognew";
 import useEdnexDocumentScroll from "./home/useEdnexDocumentScroll";
 
 const Layout = () => {

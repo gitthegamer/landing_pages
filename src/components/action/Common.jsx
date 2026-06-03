@@ -1,6 +1,4 @@
-import { InAppBrowser } from "@awesome-cordova-plugins/in-app-browser";
 import { Browser } from "@capacitor/browser";
-import { Device } from "@capacitor/device";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CommonState from "../../atoms/CommonState";

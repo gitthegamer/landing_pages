@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Block, f7, Input, List, ListInput, ListItem } from "framework7-react";
-import { useDialog } from "../action/Dialog";
+import { Block, f7, List, ListInput, ListItem } from "framework7-react";
+import { useDialog } from "../action/Dialognew";
 import { useTranslation } from "react-i18next";
-import { useToast } from "../action/Toast";
 
 function ForgotPassword({ onSubmit, forgot_password }) {
   const { t } = useTranslation();
   const { open_message } = useDialog();
-  const { show_toast } = useToast();
   const [isVerifying, setIsVerifying] = useState(false);
   const [countdown, setCountdown] = useState(60);
 

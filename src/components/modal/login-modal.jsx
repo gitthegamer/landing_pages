@@ -3,19 +3,16 @@ import {
   View,
   Page,
   LoginScreen,
-  LoginScreenTitle,
   List,
   ListInput,
-  ListButton,
   BlockFooter,
   f7,
   Button,
-  Icon,
 } from "framework7-react";
 import useAuth from "../../actions/Authenticate";
 import { useToast } from "../action/Toast";
 import navigate from "../action/navigate";
-import { useDialog } from "../action/Dialog";
+import { useDialog } from "../action/Dialognew";
 import ForgotPassword from "./ForgotPassword";
 import { useTranslation } from "react-i18next";
 

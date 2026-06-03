@@ -1,20 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Panel, Block, ListItem, f7 } from "framework7-react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useSideMenu from "../action/Sidemenu";
-import { useTokenAndUser } from "../action/user-data";
-import { useDialog } from "../action/Dialog";
-import useCommon from "../action/Common";
-import { deleteToken, getLanguage, setLanguage } from "../action/preferences";
-import i18n from "../../i18n";
-import navigate from "../action/navigate";
 import usePopup from "../action/Popup";
 import { useRecoilValue } from "recoil";
 import PopupState from "../../atoms/PopupState";
 
 function ClaimPromotionItemPopUp() {
   const { t } = useTranslation();
-  const { open_popup_claim_promotion, close_popup_claim_promotion } =
+  const { close_popup_claim_promotion } =
     usePopup();
   const { show_claim_promotion, claim_promotion_onConfirm } =
     useRecoilValue(PopupState);

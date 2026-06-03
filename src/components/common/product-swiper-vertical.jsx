@@ -5,8 +5,7 @@ import LottoResults from "./../lotto/lottoeresult";
 import { useTokenAndUser } from "../action/user-data";
 import useAuthenticate from "../../actions/Authenticate";
 import useCommon from "../action/Common";
-import { useDialog } from "../action/Dialog";
-import useLobby from "../action/Lobby";
+import { useDialog } from "../action/Dialognew";
 import { useRecoilValue } from "recoil";
 import GlobalState from "../../atoms/GlobalState";
 import { useTranslation } from "react-i18next";
@@ -14,7 +13,6 @@ import usePopup from "../action/Popup";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
 import DialogApp from "../modal/dialog-app";
-import { useLocation } from "react-router-dom";
 
 const ProductSwiperVertical = () => {
   const { t } = useTranslation();

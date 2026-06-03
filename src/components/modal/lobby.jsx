@@ -3,7 +3,7 @@ import { Navbar, f7, Popup } from "framework7-react";
 import { useRecoilValue } from "recoil";
 import useCommon from "../action/Common";
 import usePopup from "../action/Popup";
-import { useDialog } from "../action/Dialog";
+import { useDialog } from "../action/Dialognew";
 import useAuthenticate from "../../actions/Authenticate";
 import LobbyState from "../../atoms/LobbyState";
 

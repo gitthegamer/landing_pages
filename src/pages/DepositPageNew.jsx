@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Page, Block, Input, Button, f7 } from "framework7-react";
-import { useRecoilValue } from "recoil";
-import GlobalState from "../atoms/GlobalState";
 import useAuthenticate from "../actions/Authenticate";
-import { useTokenAndUser } from "../components/action/user-data";
 import { Clipboard } from "@capacitor/clipboard";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../components/action/Toast";
@@ -15,16 +12,15 @@ import DepositBankOption from "../components/deposit/DepositBankOption";
 import DepositTypeOption from "../components/deposit/DepositTypeOption";
 import DepositGameOption from "../components/deposit/DepositGameOption.jsx";
 import navigate from "../components/action/navigate.jsx";
-import { useDialog } from "../components/action/Dialog.jsx";
+import { useDialog } from "../components/action/Dialognew.jsx";
 import { deleteToken, saveToken } from "../components/action/preferences.jsx";
 
 export default function DepositPageNew() {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const global = { min_deposit: "10", max_deposit: "1000000000" };
   const { open_message } = useDialog();
   const { show_toast } = useToast();
   const { openInAppBrowser } = useCommon();
-  const { user, token, isLoading } = useTokenAndUser();
   const { payment_gateway_information, deposit } = useAuthenticate();
   const [form, setForm] = useState({
     amount: null,

@@ -1,9 +1,7 @@
-import { useRecoilState } from "recoil";
-import LobbyState from "./../../atoms/LobbyState";
 import { useTranslation } from "react-i18next";
 import useCommon from "./Common";
 import DialogApp from "../modal/dialog-app";
-import { useDialog } from "./Dialog";
+import { useDialog } from "./Dialognew";
 
 export default useLobby;
 

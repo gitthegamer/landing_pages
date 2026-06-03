@@ -5,11 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useRecoilValue } from "recoil";
 import GlobalState from "../../atoms/GlobalState";
 import { useEffect, useState } from "react";
-import { useTokenAndUser } from "../action/user-data";
 import useAuthenticate from "../../actions/Authenticate";
 import useCommon from "../action/Common";
-import { useDialog } from "../action/Dialog";
-import useLobby from "../action/Lobby";
+import { useDialog } from "../action/Dialognew";
 import { f7 } from "framework7-react";
 import usePopup from "../action/Popup";
 import { useTranslation } from "react-i18next";
@@ -20,9 +18,8 @@ const HorizontalSwiper = () => {
   const { t } = useTranslation();
   const currentLanguage = useRecoilValue(LanguageState);
   const global = useRecoilValue(GlobalState);
-  const { token, checkTokenChange, user } = useTokenAndUser();
   const { launch_game } = useAuthenticate();
-  const { product_status, member_status, openInAppBrowser, getImgUrl } =
+  const { openInAppBrowser } =
     useCommon();
   const { open_message, open_dialog_component } = useDialog();
 

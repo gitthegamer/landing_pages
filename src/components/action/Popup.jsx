@@ -1,13 +1,11 @@
 import { useRecoilState } from "recoil";
 import DailyCheckinState from "../../atoms/dailyCheckinState";
-import { useDialog } from "./Dialog";
 import LobbyState from "../../atoms/LobbyState";
 import PopupState from "../../atoms/PopupState";
 // import CheckDetail from "../checkin/CheckDetail";
 let resolvePromise = null;
 
 export default function usePopup() {
-  const { open_dialog_component } = useDialog();
   const [popup_daily_checkin, setPopupDailyCheckin] =
     useRecoilState(DailyCheckinState);
   const [popup_common, setpopupCommon] = useRecoilState(PopupState);

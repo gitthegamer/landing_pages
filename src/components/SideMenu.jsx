@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Panel, Block, ListItem, f7 } from "framework7-react";
+import React, { useEffect, useState } from "react";
+import { Button, ListItem } from "framework7-react";
 import { useTranslation } from "react-i18next";
 import useSideMenu from "./action/Sidemenu";
 import { useTokenAndUser } from "./action/user-data";
-import { useDialog } from "./action/Dialog";
+import { useDialog } from "./action/Dialognew";
 import useCommon from "./action/Common";
 import { deleteToken, getLanguage, setLanguage } from "./action/preferences";
 import i18n from "../i18n";
