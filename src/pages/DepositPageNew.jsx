@@ -61,7 +61,7 @@ export default function DepositPageNew() {
 
           return Object.values(value).some(
             (sub) =>
-              sub && Array.isArray(sub.banklist) && sub.banklist.length > 0
+              sub && Array.isArray(sub.banklist) && sub.banklist.length > 0,
           );
         })
         .map(([key]) => key);
@@ -94,7 +94,7 @@ export default function DepositPageNew() {
           const valid_payment_list = filterValidKeys(payment_list);
 
           setPaymentOptions((prevOptions) =>
-            prevOptions.filter((item) => valid_payment_list.includes(item.key))
+            prevOptions.filter((item) => valid_payment_list.includes(item.key)),
           );
           if (member_account_list?.length === 0) {
             show_toast("Member Not Found");
@@ -195,7 +195,7 @@ export default function DepositPageNew() {
     ) {
       setBankOption(groupedBankOption[selectedTypeOption].banklist);
       setSelectedBank(
-        groupedBankOption[selectedTypeOption].banklist?.[0]?.id || ""
+        groupedBankOption[selectedTypeOption].banklist?.[0]?.id || "",
       );
     }
   }, [groupedBankOption, selectedTypeOption]);
@@ -204,7 +204,7 @@ export default function DepositPageNew() {
     if (!selectedBank || !Array.isArray(bankOption)) return;
 
     const bankItem = bankOption.find(
-      (bank) => String(bank.id) === String(selectedBank)
+      (bank) => String(bank.id) === String(selectedBank),
     );
     if (bankItem) {
       setPayment(bankItem);
@@ -216,11 +216,11 @@ export default function DepositPageNew() {
 
     const minDeposit = Math.max(
       payment.min_deposit ?? 0,
-      global.min_deposit ?? 0
+      global.min_deposit ?? 0,
     );
     const maxDeposit = Math.min(
       payment.max_deposit ?? 0,
-      global.max_deposit ?? 0
+      global.max_deposit ?? 0,
     );
 
     setForm((prevForm) => ({
@@ -382,7 +382,7 @@ export default function DepositPageNew() {
               <div>
                 {/* LOGO */}
                 <div className="d-flex-center flex-column pt-4">
-                  <img className="col-4" src="/assets/image/logo/logo.webp" />
+                  <img className="col-4" src="/assets/image/logo/logo.png" />
                   <div className="text40 text-primary-sub2 lh-sm">
                     {t("Deposit")}
                   </div>

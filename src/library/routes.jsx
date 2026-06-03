@@ -1,14 +1,12 @@
 import NotFoundPage from "../pages/404.jsx";
-import DepositPageNew from "../pages/DepositPageNew.jsx";
-import LandingPage from "../pages/LandingPage.jsx";
-
+import Home from "../pages/Home.jsx";
 import Layout from "./../components/Layout.jsx";
 
 const routes = [
   {
     path: "/",
     element: <Layout />, // Common Layout
-    children: [{ path: "/", name: "Home", element: <LandingPage /> }],
+    children: [{ path: "/", name: "EDNEX SDN.BHD.", element: <Home /> }],
   },
   {
     path: "*",

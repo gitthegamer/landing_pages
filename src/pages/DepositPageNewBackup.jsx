@@ -127,7 +127,7 @@ export default function DepositPageNew() {
         }
 
         return acc;
-      }, {})
+      }, {}),
     );
   }
 
@@ -159,7 +159,7 @@ export default function DepositPageNew() {
     if (!selectedBank || !Array.isArray(bankOption)) return;
 
     const bankItem = bankOption.find(
-      (bank) => String(bank.id) === String(selectedBank)
+      (bank) => String(bank.id) === String(selectedBank),
     );
     if (bankItem) {
       setPayment(bankItem);
@@ -171,11 +171,11 @@ export default function DepositPageNew() {
 
     const minDeposit = Math.max(
       payment.min_deposit ?? 0,
-      global.min_deposit ?? 0
+      global.min_deposit ?? 0,
     );
     const maxDeposit = Math.min(
       payment.max_deposit ?? 0,
-      global.max_deposit ?? 0
+      global.max_deposit ?? 0,
     );
 
     setForm((prevForm) => ({
@@ -205,7 +205,7 @@ export default function DepositPageNew() {
     setForm((prevForm) => {
       const newAmount = Math.min(
         maximumDeposit,
-        Math.max(item, minimumDeposit)
+        Math.max(item, minimumDeposit),
       );
 
       return { ...prevForm, amount: newAmount };
@@ -349,7 +349,7 @@ export default function DepositPageNew() {
               <div>
                 {/* LOGO */}
                 <div className="d-flex-center flex-column pt-4">
-                  <img className="col-4" src="/assets/image/logo/logo.webp" />
+                  <img className="col-4" src="/assets/image/logo/logo.png" />
                   <div className="text40 text-primary-sub2 lh-sm">
                     {t("Deposit")}
                   </div>

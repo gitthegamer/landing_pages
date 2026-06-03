@@ -1,39 +1,25 @@
-import { f7ready, Views, View, Toolbar, Link, f7 } from "framework7-react";
+import { f7 } from "framework7-react";
 import LoginModal from "./modal/login-modal";
-import useAuthenticate from "../actions/Authenticate";
-import useGlobal from "../actions/Global";
 import ConfirmMessage from "./modal/confirm-message";
-import { useTokenAndUser } from "./action/user-data";
 import { useTranslation, initReactI18next } from "react-i18next";
 import en from "./../lng/en.json";
-import cn from "./../lng/cn.json";
-import bm from "./../lng/bm.json";
 
 import {
   RouterProvider,
   createBrowserRouter,
-  useLocation,
 } from "react-router-dom";
 import React, { Suspense, useEffect, useState } from "react";
-import DialogApp from "./modal/dialog-app";
 
 import routes from "../library/routes";
-import useCommon from "./action/Common";
 import { getLanguage, saveToken } from "./action/preferences";
 import LanguageState from "../atoms/LanguageState";
 import { useRecoilState } from "recoil";
 import { Helmet } from "react-helmet";
-import { useDialog } from "./action/Dialog";
 import ReactPixel from "react-facebook-pixel";
 
 const MyApp = () => {
   const { i18n, t } = useTranslation();
-  const { token, isLoading } = useTokenAndUser();
-  const { refresh_user } = useCommon();
-  const { open_message } = useDialog();
-  const Global = useGlobal();
 
-  const [isGlobalThemeBlank, setIsGlobalThemeBlank] = useState(true);
 
   const resources = {
     en: { translation: en },
@@ -123,29 +109,37 @@ const MyApp = () => {
   return (
     <>
       <Helmet>
-        <title>{t(globalSettings?.meta_title || "The Gamer")}</title>
+        <title>
+          {globalSettings?.meta_title ||
+            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist Malaysia"}
+        </title>
         <meta
           name="description"
           content={
-            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+            globalSettings?.meta_description ||
+            "EDNEX SDN.BHD. — leading supplier and distributor of heavy truck parts in Malaysia. Engines, gearboxes, axles, and precision components for Volvo, Scania, Mercedes-Benz, and more."
           }
         />
         <meta
           property="og:title"
-          content={globalSettings?.meta_title || "The Gamer"}
+          content={
+            globalSettings?.meta_title ||
+            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist"
+          }
         />
         <meta
           property="og:description"
           content={
-            "Discover leading white label casino and sportsbook platforms that offer fast launch, white-label branding, crypto support, bonus engines, licensing assistance, and powerful back-office tools to grow your gambling business"
+            globalSettings?.meta_description ||
+            "Heavy transport parts specialist in LG1-2, Seri Gembira Avenue, No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur. Nationwide delivery across all 13 states."
           }
         />
         <meta
           property="og:image"
           content={globalSettings?.meta_thumbnail || "icons/icon-only.png"}
         />
-        <link rel="apple-touch-icon" href="/assets/image/logo/logo.webp" />
-        <link rel="icon" href="/assets/image/logo/logo.webp" />
+        <link rel="apple-touch-icon" href="/assets/image/logo/logo.png" />
+        <link rel="icon" href="/assets/image/logo/logo.png" />
         <link rel="canonical" href={"https://777s.live/"} />
       </Helmet>
       <Suspense fallback={<div>Loading...</div>}>
@@ -155,7 +149,6 @@ const MyApp = () => {
       {/* ================== Popup ================== */}
       <ConfirmMessage />
       <LoginModal />
-      <DialogApp />
       {/* =========================================== */}
     </>
   );
