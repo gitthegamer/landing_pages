@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { App } from "framework7-react";
 
 import store from "../js/store";
 import { RecoilRoot } from "recoil";
 import MyApp from "./app";
-import { ScreenOrientation } from "@capacitor/screen-orientation";
-import { Device } from "@capacitor/device";
 import { useTranslation } from "react-i18next";
 
 const Main = () => {
