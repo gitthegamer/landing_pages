@@ -12,7 +12,9 @@ export default function WhyUsSection() {
         <div className="ednex-why-grid">
           {EDNEX_WHY.map((item) => (
             <div key={item.title} className="ednex-why-card">
-              <div className="ednex-why-icon">{item.icon}</div>
+              <div className="ednex-why-icon">
+                <img src={item.icon} alt={item.title} />
+              </div>
               <div className="ednex-why-title">{item.title}</div>
               <p className="ednex-why-desc">{item.desc}</p>
             </div>

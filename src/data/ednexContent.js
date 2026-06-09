@@ -101,38 +101,38 @@ export const EDNEX_SERVICES = [
     desc: "Our experienced specialists offer professional consultation to accurately identify and recommend the right parts based on your vehicle specifications and operating requirements. We provide expert guidance on component selection, compatibility, repairs, and maintenance, ensuring optimal performance. Initial consultation is provided free of charge to support informed and cost-effective decisions.",
     cta: "Contact Us",
     reverse: true,
-  }
+  },
 ];
 
 export const EDNEX_WHY = [
   {
-    icon: "💰",
+    icon: "/assets/image/ednex/money.png",
     title: "Competitive Pricing",
     desc: "We offer market-competitive pricing across all product categories, with full transparency—no hidden charges, and all quotations are confirmed upfront.",
   },
   {
-    icon: "🚚",
+    icon: "/assets/image/ednex/fast-delivery.png",
     title: "Nationwide Delivery",
     desc: "Reliable and prompt delivery across all 13 states, including Sabah and Sarawak, through our trusted logistics network.",
   },
   {
-    icon: "🛡️",
+    icon: "/assets/image/ednex/encrypted.png",
     title: "Verified Quality",
     desc: "Every part is thoroughly inspected prior to dispatch to guarantee compatibility and performance. We only supply products we confidently stand behind.",
   },
 
   {
-    icon: "🤝",
+    icon: "/assets/image/ednex/maintenance.png",
     title: "After-Sales Support",
     desc: "Our commitment continues beyond the sale, with ongoing support for installation guidance, technical inquiries, and follow-up assistance.",
   },
   {
-    icon: "⚙️",
+    icon: "/assets/image/ednex/consulting.png",
     title: "Expert Consultation",
     desc: "Our specialists accurately identify the right parts based on your vehicle’s make, model, and engine specifications—minimizing costly ordering mistakes.",
   },
   {
-    icon: "📦",
+    icon: "/assets/image/ednex/inventory-management.png",
     title: "Large Inventory",
     desc: "With over 1,000 parts readily available, from complete engines to individual components, we ensure fast and efficient order fulfillment.",
   },
