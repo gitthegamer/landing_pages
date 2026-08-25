@@ -27,19 +27,20 @@
 }
 
 :root {
-  /* EDNEX corporate theme */
-  --ednex-gold: #d10812;
-  --ednex-gold2: #d10812;
-  --ednex-dark: #1a1a1a;
+  /* The Play Standard theme */
+  --ednex-gold: #b98a2f;
+  --ednex-gold2: #d7b86a;
+  --ednex-dark: #131313;
   --ednex-darker: #111111;
-  --ednex-white: #ffffff;
-  --ednex-light: #f5f5f5;
-  --ednex-muted: #666666;
-  --ednex-border: #e0e0e0;
-  --ednex-font-heading: "Rubik", sans-serif;
-  --ednex-font-body: "Open Sans", sans-serif;
-  /* topbar (~36px) + main header (72px) */
-  --ednex-fixed-header-height: 108px;
+  --ednex-white: #fffdf8;
+  --ednex-light: #f7f1e6;
+  --ednex-muted: #655f56;
+  --ednex-border: #dfd1b5;
+  --ednex-font-heading: Georgia, serif;
+  --ednex-font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --tps-fixed-header-height: 78px;
+  --ednex-fixed-header-height: 78px;
 
   /* Framework7 overrides — corporate landing */
   --f7-font-family: var(--ednex-font-body);

@@ -1,17 +1,17 @@
 let navigateFn = null;
 
-export const HEADER_SCROLL_OFFSET = 110;
+export const HEADER_SCROLL_OFFSET = 86;
 
 export function getHeaderScrollOffset() {
   const raw = getComputedStyle(document.documentElement).getPropertyValue(
-    "--ednex-fixed-header-height"
+    "--tps-fixed-header-height"
   );
   const height = parseInt(raw, 10);
   return Number.isFinite(height) && height > 0 ? height + 8 : HEADER_SCROLL_OFFSET;
 }
 
 /**
- * Scroll container for the EDNEX landing page (document scroll, not F7 trap).
+ * Scroll container for the landing page (document scroll, not F7 trap).
  */
 export function getEdnexScrollRoot() {
   return document.scrollingElement || document.documentElement;
@@ -26,30 +26,16 @@ export function scrollToSection(sectionId) {
   const target = document.getElementById(id);
   if (!target) return;
 
-  const scrollRoot = getEdnexScrollRoot();
   const offset = getHeaderScrollOffset();
-
-  const isDocumentScroll =
-    scrollRoot === document.scrollingElement ||
-    scrollRoot === document.documentElement ||
-    scrollRoot === document.body;
-
-  if (isDocumentScroll) {
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-  } else {
-    const parentTop = scrollRoot.getBoundingClientRect().top;
-    const targetTop = target.getBoundingClientRect().top;
-    const top = scrollRoot.scrollTop + (targetTop - parentTop) - offset;
-    scrollRoot.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-  }
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 
   const hash = `#${id}`;
   if (window.location.hash !== hash) {
     window.history.pushState(
       null,
       "",
-      `${window.location.pathname}${window.location.search}${hash}`
+      `${window.location.pathname}${window.location.search}${hash}`,
     );
   }
 }

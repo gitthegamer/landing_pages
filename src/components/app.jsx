@@ -111,27 +111,27 @@ const MyApp = () => {
       <Helmet>
         <title>
           {globalSettings?.meta_title ||
-            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist Malaysia"}
+            "The Play Standard | Ranked by Players. Built on Trust."}
         </title>
         <meta
           name="description"
           content={
             globalSettings?.meta_description ||
-            "EDNEX SDN.BHD. — leading supplier and distributor of heavy truck parts in Malaysia. Engines, gearboxes, axles, and precision components for Volvo, Scania, Mercedes-Benz, and more."
+            "Independent rankings shaped by real player votes. Premium player-powered platform rankings — demo."
           }
         />
         <meta
           property="og:title"
           content={
             globalSettings?.meta_title ||
-            "EDNEX SDN.BHD. | Heavy Transport Parts Specialist"
+            "The Play Standard | Ranked by Players. Built on Trust."
           }
         />
         <meta
           property="og:description"
           content={
             globalSettings?.meta_description ||
-            "Heavy transport parts specialist in LG1-2, Seri Gembira Avenue, No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur. Nationwide delivery across all 13 states."
+            "Independent. Transparent. Player-powered rankings."
           }
         />
         <meta

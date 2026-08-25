@@ -1,5 +1,5 @@
 @use "./variable.scss";
-@use "./ednex.scss";
+@use "./tps.scss";
 
 img {
   vertical-align: top;
@@ -23,34 +23,23 @@ img {
 .dialog-button:nth-last-child(2) {
   border-radius: 10px;
   border: 1px solid var(--primary-main-color);
-  color: var(--ednex-darker);
+  color: var(--ink, #131313);
 }
 
 .dialog-button:last-child {
   border-radius: 10px;
   background: var(--gradient-primary-main-color);
-  color: var(--ednex-darker);
+  color: var(--ink, #131313);
 }
 
 .dialog-button.cancel-btn {
   border-radius: 10px;
-  border: 1px solid var(--ednex-dark);
-  color: var(--ednex-darker);
+  border: 1px solid var(--ink, #131313);
+  color: var(--ink, #131313);
 }
 
 .dialog-button.confirm-btn {
   background: var(--gradient-primary-main-color);
-}
-
-.ednex-page .page-content {
-  background: var(--ednex-white);
-}
-
-/* Landing layout: full-width (not mobile-app constrained) */
-.ednex-layout {
-  width: 100%;
-  min-height: 100vh;
-  background: var(--ednex-white);
 }
 
 #framework7-root {

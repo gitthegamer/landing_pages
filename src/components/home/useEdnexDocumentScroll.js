@@ -7,7 +7,7 @@ const SCROLL_CHAIN_IDS = ["app", "framework7-root"];
  * Reset the chain so the landing page scrolls on the document (like the static HTML).
  */
 export function applyEdnexDocumentScroll() {
-  document.documentElement.classList.add("ednex-landing");
+  document.documentElement.classList.add("tps-landing");
 
   SCROLL_CHAIN_IDS.forEach((id) => {
     const el = document.getElementById(id);
@@ -18,7 +18,7 @@ export function applyEdnexDocumentScroll() {
     el.style.overflowX = "hidden";
   });
 
-  document.querySelectorAll(".ednex-page.page").forEach((page) => {
+  document.querySelectorAll(".tps-page.page").forEach((page) => {
     page.style.position = "relative";
     page.style.top = "auto";
     page.style.left = "auto";
@@ -27,14 +27,14 @@ export function applyEdnexDocumentScroll() {
     page.style.overflow = "visible";
   });
 
-  document.querySelectorAll(".ednex-page .page-content").forEach((el) => {
+  document.querySelectorAll(".tps-page .page-content").forEach((el) => {
     el.style.height = "auto";
     el.style.overflow = "visible";
   });
 }
 
 export function clearEdnexDocumentScroll() {
-  document.documentElement.classList.remove("ednex-landing");
+  document.documentElement.classList.remove("tps-landing");
   SCROLL_CHAIN_IDS.forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;

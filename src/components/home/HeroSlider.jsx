@@ -1,89 +1,52 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { EDNEX_SLIDES } from "../../data/ednexContent";
+import React, { useCallback } from "react";
 import navigate from "../action/navigate";
+import { TPS_STATS } from "../../data/tpsContent";
 
 export default function HeroSlider() {
-  const [current, setCurrent] = useState(0);
-
-  const goTo = useCallback((n) => {
-    setCurrent((n + EDNEX_SLIDES.length) % EDNEX_SLIDES.length);
-  }, []);
-
-  const change = useCallback((dir) => goTo(current + dir), [current, goTo]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % EDNEX_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const handleActionClick = (e, href) => {
-    if (href?.startsWith("#")) {
+  const goRankings = useCallback(
+    (e) => {
       e.preventDefault();
-      navigate(href);
-    }
-  };
+      navigate("#rankings");
+    },
+    [],
+  );
 
   return (
-    <div className="ednex-hero-slider" id="home">
-      {EDNEX_SLIDES.map((slide, i) => (
-        <div key={i} className={`ednex-slide ${i === current ? "active" : ""}`}>
-          <div className="ednex-slide-bg">
-            <img src={slide.image} alt={slide.eyebrow} />
-          </div>
-          <div className="ednex-slide-content">
-            <div className="ednex-slide-eyebrow">{slide.eyebrow}</div>
-            <div
-              className="ednex-slide-h1"
-              dangerouslySetInnerHTML={{ __html: slide.titleHtml }}
-            />
-            <div className="ednex-slide-actions">
-              {slide.actions.map((action) => (
-                <a
-                  key={action.label}
-                  href={action.href}
-                  className={`ednex-btn-hero ednex-btn-hero-${action.variant} text-color-white`}
-                  onClick={(e) => handleActionClick(e, action.href)}
-                >
-                  {action.label}
-                </a>
-              ))}
+    <section className="hero">
+      <img
+        className="hero-photo left"
+        src="/assets/image/tps/hero-left.jpg"
+        alt="Casino roulette and chips"
+      />
+      <img
+        className="hero-photo right"
+        src="/assets/image/tps/hero-right.jpg"
+        alt="Premium cards and casino details"
+      />
+      <div className="hero-overlay" />
+      <div className="wrap hero-content">
+        <div className="eyebrow">PREMIUM PLAYER-POWERED RANKINGS · DEMO</div>
+        <h1>THE PLAY STANDARD</h1>
+        <div className="orn">—— ♛ ——</div>
+        <h2>
+          Where Players
+          <br />
+          Set <em>the</em> Standard.
+        </h2>
+        <p>Independent rankings shaped by real player votes.</p>
+        <a className="cta" href="#rankings" onClick={goRankings}>
+          EXPLORE RANKINGS&nbsp; →
+        </a>
+        <div className="stats">
+          {TPS_STATS.map((stat) => (
+            <div key={stat.label} className="stat">
+              <b>{stat.value}</b>
+              <span>{stat.label}</span>
+              <i className="demo">{stat.note}</i>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-
-      <div className="ednex-slider-arrows">
-        <button
-          type="button"
-          className="ednex-slider-arrow prev"
-          aria-label="Previous slide"
-          onClick={() => change(-1)}
-        >
-          ←
-        </button>
-        <button
-          type="button"
-          className="ednex-slider-arrow next"
-          aria-label="Next slide"
-          onClick={() => change(1)}
-        >
-          →
-        </button>
       </div>
-
-      <div className="ednex-slider-dots">
-        {EDNEX_SLIDES.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            className={`ednex-dot ${i === current ? "active" : ""}`}
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => goTo(i)}
-          />
-        ))}
-      </div>
-    </div>
+    </section>
   );
 }

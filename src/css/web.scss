@@ -3,36 +3,9 @@
   user-select: none;
 }
 
-/* EDNEX corporate site — full-width responsive layout */
-.ednex-layout {
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-.ednex-site .ednex-container {
-  max-width: 1170px;
-}
-
 @media (min-width: 768px) {
   :root {
     --f7-font-size: 16px;
     --f7-dialog-width: 640px;
-  }
-}
-
-@media (min-width: 992px) {
-  .ednex-hero-slider {
-    height: 560px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .ednex-site .ednex-container,
-  .ednex-topbar-inner,
-  .ednex-header-inner,
-  .ednex-slide-content,
-  .ednex-footer-main,
-  .ednex-footer-bottom {
-    max-width: 1170px;
   }
 }

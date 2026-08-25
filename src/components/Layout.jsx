@@ -37,7 +37,7 @@ const Layout = () => {
   }, [location.search, open_message, t]);
 
   return (
-    <div className="ednex-layout position-relative">
+    <div className="tps-layout position-relative">
       <Outlet />
     </div>
   );

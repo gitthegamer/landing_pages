@@ -6,7 +6,7 @@ const routes = [
   {
     path: "/",
     element: <Layout />, // Common Layout
-    children: [{ path: "/", name: "EDNEX SDN.BHD.", element: <Home /> }],
+    children: [{ path: "/", name: "The Play Standard", element: <Home /> }],
   },
   {
     path: "*",

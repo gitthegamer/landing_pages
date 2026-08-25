@@ -1,88 +1,91 @@
-import React from "react";
-import { EDNEX_CONTACT, EDNEX_NAV } from "../../data/ednexContent";
-import { useSectionNav, sectionNavProps } from "./useSectionNav";
-
-const FOOTER_PARTS = [
-  "Engines & Powertrains",
-  "Gearboxes",
-  "Axles & Chassis",
-  "Cylinder Heads",
-  "Torque Converters",
-  "Engine Components",
-];
+import React, { useState } from "react";
+import navigate from "../action/navigate";
+import { TPS_FOOTER } from "../../data/tpsContent";
 
 export default function SiteFooter() {
-  const onNav = useSectionNav();
+  const [email, setEmail] = useState("");
+
+  const handleNav = (e, href) => {
+    if (href?.startsWith("#") && href.length > 1) {
+      e.preventDefault();
+      navigate(href);
+    }
+  };
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    setEmail("");
+  };
 
   return (
-    <footer className="ednex-footer">
-      <div className="ednex-footer-main">
-        <div>
-          <img
-            src="/assets/image/logo/logo.png"
-            alt="EDNEX SDN.BHD."
-            onClick={() => navigate("/")}
-            style={{
-              maxHeight: "70px",
-              aspectRatio: "1.5",
-            }}
-          />
-          <p className="ednex-footer-brand-desc">
-            A reliable supplier of heavy-duty truck parts and components in
-            Malaysia, delivering a comprehensive inventory and professional
-            services to businesses nationwide since 2009.
-          </p>
-        </div>
-        <div className="ednex-footer-col">
-          <h4>Quick Links</h4>
-          <ul className="ednex-footer-nav">
-            {EDNEX_NAV.map((item) => (
-              <li key={item.id}>
-                <a {...sectionNavProps(item.id, onNav)}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="ednex-footer-col">
-          <h4>Parts Categories</h4>
-          <ul className="ednex-footer-nav">
-            {FOOTER_PARTS.map((label) => (
-              <li key={label}>
-                <a {...sectionNavProps("parts", onNav)}>{label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="ednex-footer-col">
-          <h4>Contact Info</h4>
-          <ul className="ednex-footer-nav" style={{ gap: 12 }}>
-            <li>📍 {EDNEX_CONTACT.location}</li>
-            <li>
-              📞{" "}
-              <a href={`tel:${EDNEX_CONTACT.phoneTel}`}>
-                {EDNEX_CONTACT.phone}
+    <footer id="about">
+      <div className="wrap">
+        <div className="footgrid">
+          <div>
+            <div className="footbrand">
+              THE
+              <br />
+              PLAY STANDARD
+            </div>
+            <p>
+              Independent. Transparent.
+              <br />
+              Player-powered.
+            </p>
+          </div>
+          <div>
+            <h5>RANKINGS</h5>
+            {TPS_FOOTER.rankings.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNav(e, link.href)}
+              >
+                {link.label}
               </a>
-            </li>
-            <li>
-              💬 <a href={EDNEX_CONTACT.whatsappLink}>WhatsApp Us</a>
-            </li>
-            <li>
-              ✉️{" "}
-              <a href={`mailto:${EDNEX_CONTACT.email}`}>
-                {EDNEX_CONTACT.email}
+            ))}
+          </div>
+          <div>
+            <h5>INFORMATION</h5>
+            {TPS_FOOTER.information.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNav(e, link.href)}
+              >
+                {link.label}
               </a>
-            </li>
-            <li>🕒 {EDNEX_CONTACT.hours}</li>
-          </ul>
+            ))}
+          </div>
+          <div id="responsible">
+            <h5>LEGAL</h5>
+            {TPS_FOOTER.legal.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNav(e, link.href)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div>
+            <h5>STAY UPDATED</h5>
+            <p>Get monthly ranking updates and platform insights.</p>
+            <form className="email" onSubmit={handleSubscribe}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label="Email"
+              />
+              <button type="submit">→</button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div className="ednex-footer-bottom">
-        <div className="ednex-footer-copy">
-          © 2026 EDNEX SDN.BHD. All Rights Reserved. LG1-2, Seri Gembira Avenue,
-          No.6, Jalan Senang Ria, Kuchai Lama, 58200 Kuala Lumpur.
-        </div>
-        <div className="ednex-footer-copy">
-          Heavy Transport Parts Specialist
+        <div className="copyright">
+          © 2026 The Play Standard · Demo Website for Preview Purposes Only
         </div>
       </div>
     </footer>

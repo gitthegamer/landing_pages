@@ -3,12 +3,18 @@ import navigate, {
   scrollToSection,
   getHeaderScrollOffset,
 } from "./action/navigate";
-import { EDNEX_CONTACT, EDNEX_NAV } from "../data/ednexContent";
+import { TPS_NAV } from "../data/tpsContent";
 
-const SECTION_IDS = EDNEX_NAV.map((n) => n.id);
+const SECTION_IDS = [
+  "rankings",
+  "feature",
+  "methodology",
+  "about",
+  "responsible",
+];
 
 function Header() {
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
@@ -25,21 +31,21 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    const fixedHeader = document.querySelector(".ednex-site-header-fixed");
+    const topbar = document.querySelector(".tps-site .topbar");
     const updateHeaderHeight = () => {
-      if (!fixedHeader) return;
+      if (!topbar) return;
       document.documentElement.style.setProperty(
-        "--ednex-fixed-header-height",
-        `${fixedHeader.offsetHeight}px`,
+        "--tps-fixed-header-height",
+        `${topbar.offsetHeight}px`,
       );
     };
     updateHeaderHeight();
     window.addEventListener("resize", updateHeaderHeight);
     const ro =
-      typeof ResizeObserver !== "undefined" && fixedHeader
+      typeof ResizeObserver !== "undefined" && topbar
         ? new ResizeObserver(updateHeaderHeight)
         : null;
-    if (ro && fixedHeader) ro.observe(fixedHeader);
+    if (ro && topbar) ro.observe(topbar);
 
     return () => {
       window.removeEventListener("resize", updateHeaderHeight);
@@ -50,7 +56,7 @@ function Header() {
   useEffect(() => {
     const onScroll = () => {
       const offset = getHeaderScrollOffset();
-      let current = "home";
+      let current = "";
       for (const id of SECTION_IDS) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= offset) {
@@ -101,97 +107,75 @@ function Header() {
 
   return (
     <>
-      <div className="ednex-site-header-fixed">
-        <div className="ednex-topbar">
-          <div className="ednex-topbar-inner">
-            <div className="ednex-topbar-left">
-              <div className="ednex-topbar-item">
-                <svg viewBox="0 0 24 24" aria-hidden>
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-                {EDNEX_CONTACT.location}
-              </div>
-              <div className="ednex-topbar-item">
-                <svg viewBox="0 0 24 24" aria-hidden>
-                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-                <a href={`mailto:${EDNEX_CONTACT.email}`}>
-                  {EDNEX_CONTACT.email}
-                </a>
-              </div>
-            </div>
-            <div>{EDNEX_CONTACT.hours}</div>
+      <header className="topbar">
+        <div className="wrap nav">
+          <div
+            className="brand"
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setActive("");
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                setActive("");
+              }
+            }}
+          >
+            THE PLAY STANDARD
+            <small>RANKED BY PLAYERS. BUILT ON TRUST.</small>
           </div>
-        </div>
-
-        <header className="ednex-header">
-          <div className="ednex-header-inner">
-            <img
-              src="/assets/image/logo/logo.png"
-              alt="EDNEX SDN.BHD."
-              onClick={() => navigate("/")}
-              style={{
-                maxHeight: "70px",
-                aspectRatio: "1.5",
-              }}
-            />
-            <ul className="ednex-main-nav">
-              {EDNEX_NAV.map((item) => (
-                <li
-                  key={item.id}
-                  className={active === item.id ? "active" : ""}
-                >
-                  <a
-                    href={`#${item.id}`}
-                    onClick={(e) => handleNavClick(e, item.id)}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="ednex-header-phone">
-              <svg viewBox="0 0 24 24" aria-hidden>
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-              </svg>
-              Hotline:{" "}
-              <a href={`tel:${EDNEX_CONTACT.phoneTel}`}>
-                {EDNEX_CONTACT.phone}
+          <nav className="navlinks">
+            {TPS_NAV.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={active === item.id ? "is-active" : ""}
+                onClick={(e) => handleNavClick(e, item.id)}
+              >
+                {item.label}
               </a>
-            </div>
-            <button
-              type="button"
-              className={`ednex-menu-toggle${menuOpen ? " is-open" : ""}`}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-              aria-controls="ednex-mobile-nav"
-              onClick={toggleMenu}
-            >
-              <span className="ednex-menu-toggle-bar" />
-              <span className="ednex-menu-toggle-bar" />
-              <span className="ednex-menu-toggle-bar" />
-            </button>
-          </div>
-        </header>
-      </div>
+            ))}
+          </nav>
+          <a
+            className="vote-now"
+            href="#rankings"
+            onClick={(e) => handleNavClick(e, "rankings")}
+          >
+            ♔ VOTE NOW
+          </a>
+          <button
+            type="button"
+            className={`menu-toggle${menuOpen ? " is-open" : ""}`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="tps-mobile-nav"
+            onClick={toggleMenu}
+          >
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+          </button>
+        </div>
+      </header>
 
       <div
-        className={`ednex-mobile-nav-backdrop${menuOpen ? " is-open" : ""}`}
+        className={`mobile-nav-backdrop${menuOpen ? " is-open" : ""}`}
         onClick={closeMenu}
         aria-hidden={!menuOpen}
       />
 
       <nav
-        id="ednex-mobile-nav"
-        className={`ednex-mobile-nav${menuOpen ? " is-open" : ""}`}
+        id="tps-mobile-nav"
+        className={`mobile-nav${menuOpen ? " is-open" : ""}`}
         aria-hidden={!menuOpen}
       >
-        <ul className="ednex-mobile-nav-list">
-          {EDNEX_NAV.map((item) => (
-            <li
-              key={item.id}
-              className={active === item.id ? "active" : ""}
-            >
+        <ul className="mobile-nav-list">
+          {TPS_NAV.map((item) => (
+            <li key={item.id} className={active === item.id ? "is-active" : ""}>
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
@@ -201,20 +185,14 @@ function Header() {
             </li>
           ))}
         </ul>
-        <div className="ednex-mobile-nav-phone">
-          <svg viewBox="0 0 24 24" aria-hidden>
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-          </svg>
-          <div>
-            <span className="ednex-mobile-nav-phone-label">Hotline</span>
-            <a href={`tel:${EDNEX_CONTACT.phoneTel}`}>
-              {EDNEX_CONTACT.phone}
-            </a>
-          </div>
-        </div>
+        <a
+          className="vote-now mobile-vote"
+          href="#rankings"
+          onClick={(e) => handleNavClick(e, "rankings")}
+        >
+          ♔ VOTE NOW
+        </a>
       </nav>
-
-      <div className="ednex-header-spacer" aria-hidden="true" />
     </>
   );
 }
