@@ -11,7 +11,7 @@ const Main = () => {
   const { t } = useTranslation();
   // Framework7 Parameters
   const f7params = {
-    name: "label1landing", // App name
+    name: "The Play Standard", // App name
     theme: "auto", // Automatic theme detection
     browserHistory: true,
     browserHistoryRoot: "",

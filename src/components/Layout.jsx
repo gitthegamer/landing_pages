@@ -3,10 +3,10 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { setNavigate } from "./action/navigate";
 import { useTranslation } from "react-i18next";
 import { useDialog } from "./action/Dialognew";
-import useEdnexDocumentScroll from "./home/useEdnexDocumentScroll";
+import useTpsDocumentScroll from "./home/useTpsDocumentScroll";
 
 const Layout = () => {
-  useEdnexDocumentScroll();
+  useTpsDocumentScroll();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();

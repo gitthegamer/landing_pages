@@ -12,9 +12,9 @@ const SCROLL_CHAIN_SELECTORS = [
 
 /**
  * Framework7 App sets #app { height: 100% } and traps scroll in .page / .page-content.
- * Reset the chain so the landing page scrolls on the document (like the static HTML).
+ * Reset the chain so The Play Standard landing scrolls on the document.
  */
-export function applyEdnexDocumentScroll() {
+export function applyTpsDocumentScroll() {
   document.documentElement.classList.add("tps-landing");
 
   SCROLL_CHAIN_IDS.forEach((id) => {
@@ -42,7 +42,7 @@ export function applyEdnexDocumentScroll() {
   });
 }
 
-export function clearEdnexDocumentScroll() {
+export function clearTpsDocumentScroll() {
   document.documentElement.classList.remove("tps-landing");
   SCROLL_CHAIN_IDS.forEach((id) => {
     const el = document.getElementById(id);
@@ -66,18 +66,18 @@ export function clearEdnexDocumentScroll() {
   });
 }
 
-export default function useEdnexDocumentScroll() {
+export default function useTpsDocumentScroll() {
   useEffect(() => {
-    applyEdnexDocumentScroll();
-    const t1 = window.setTimeout(applyEdnexDocumentScroll, 0);
-    const t2 = window.setTimeout(applyEdnexDocumentScroll, 100);
-    const t3 = window.setTimeout(applyEdnexDocumentScroll, 500);
+    applyTpsDocumentScroll();
+    const t1 = window.setTimeout(applyTpsDocumentScroll, 0);
+    const t2 = window.setTimeout(applyTpsDocumentScroll, 100);
+    const t3 = window.setTimeout(applyTpsDocumentScroll, 500);
 
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.clearTimeout(t3);
-      clearEdnexDocumentScroll();
+      clearTpsDocumentScroll();
     };
   }, []);
 }

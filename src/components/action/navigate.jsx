@@ -71,7 +71,7 @@ export const setNavigate = (navigate) => {
 };
 
 /**
- * Global navigation — routes, back, and in-page section hashes (EDNEX header).
+ * Global navigation — routes, back, and in-page section hashes.
  * @param {string | number} path - Route path, "#section", "/#section", or -1
  */
 export default function navigate(path) {

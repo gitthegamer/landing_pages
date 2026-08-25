@@ -28,40 +28,39 @@
 
 :root {
   /* The Play Standard theme */
-  --ednex-gold: #b98a2f;
-  --ednex-gold2: #d7b86a;
-  --ednex-dark: #131313;
-  --ednex-darker: #111111;
-  --ednex-white: #fffdf8;
-  --ednex-light: #f7f1e6;
-  --ednex-muted: #655f56;
-  --ednex-border: #dfd1b5;
-  --ednex-font-heading: Georgia, serif;
-  --ednex-font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+  --tps-gold: #b98a2f;
+  --tps-gold2: #d7b86a;
+  --tps-dark: #131313;
+  --tps-darker: #111111;
+  --tps-white: #fffdf8;
+  --tps-light: #f7f1e6;
+  --tps-muted: #655f56;
+  --tps-border: #dfd1b5;
+  --tps-font-heading: Georgia, serif;
+  --tps-font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   --tps-fixed-header-height: 78px;
-  --ednex-fixed-header-height: 78px;
 
-  /* Framework7 overrides — corporate landing */
-  --f7-font-family: var(--ednex-font-body);
+  /* Framework7 overrides */
+  --f7-font-family: var(--tps-font-body);
   --f7-tabbar-icons-height: 0px;
   --f7-tabbar-link-active-icon-bg-color: transparent;
   --f7-tabbar-label-font-size: 10px;
 
   --f7-navbar-title-font-size: 18px;
-  --f7-navbar-bg-color: var(--ednex-white);
-  --f7-navbar-text-color: var(--ednex-dark);
-  --f7-navbar-link-color: var(--ednex-dark);
+  --f7-navbar-bg-color: var(--tps-white);
+  --f7-navbar-text-color: var(--tps-dark);
+  --f7-navbar-link-color: var(--tps-dark);
   --f7-navbar-height: 0px;
-  --f7-tabbar-link-active-color: var(--ednex-gold2);
-  --f7-tabbar-link-inactive-color: var(--ednex-muted);
+  --f7-tabbar-link-active-color: var(--tps-gold2);
+  --f7-tabbar-link-inactive-color: var(--tps-muted);
 
-  --f7-button-border-color: var(--ednex-gold);
+  --f7-button-border-color: var(--tps-gold);
 
-  --f7-dialog-bg-color: var(--ednex-white);
+  --f7-dialog-bg-color: var(--tps-white);
   --f7-dialog-width: 90vw;
-  --f7-dialog-text-color: var(--ednex-dark);
-  --f7-dialog-title-text-color: var(--ednex-dark);
+  --f7-dialog-text-color: var(--tps-dark);
+  --f7-dialog-title-text-color: var(--tps-dark);
   --f7-input-item-border-radius: 8px;
 
   --f7-list-item-min-height: 21px;
@@ -73,39 +72,39 @@
   --top-toolbar-height: 0px;
 
   --border-style: solid;
-  --border-color: var(--ednex-border);
+  --border-color: var(--tps-border);
 
-  /* Legacy aliases used by utility classes */
-  --primary-main-color: var(--ednex-gold);
-  --primary-sub-color: var(--ednex-gold2);
-  --primary-sub2-color: var(--ednex-light);
-  --secondary-main-color: var(--ednex-darker);
-  --tertiary-main-color: var(--ednex-white);
+  /* Utility aliases */
+  --primary-main-color: var(--tps-gold);
+  --primary-sub-color: var(--tps-gold2);
+  --primary-sub2-color: var(--tps-light);
+  --secondary-main-color: var(--tps-darker);
+  --tertiary-main-color: var(--tps-white);
   --gradient-primary-main-color: linear-gradient(
     180deg,
-    var(--ednex-gold),
-    var(--ednex-gold2)
+    var(--tps-gold),
+    var(--tps-gold2)
   );
 
-  --btn-bg-primary: var(--ednex-gold);
-  --btn-primary-color: var(--ednex-darker);
-  --btn-bg-secondary: var(--ednex-gold2);
-  --btn-secondary-color: var(--ednex-darker);
-  --btn-outline-primary: var(--ednex-gold);
-  --btn-outline-primary-color: var(--ednex-dark);
+  --btn-bg-primary: var(--tps-gold);
+  --btn-primary-color: var(--tps-darker);
+  --btn-bg-secondary: var(--tps-gold2);
+  --btn-secondary-color: var(--tps-darker);
+  --btn-outline-primary: var(--tps-gold);
+  --btn-outline-primary-color: var(--tps-dark);
   --btn-bg-disable: linear-gradient(360deg, #626262 0%, #c8c8c8 100%);
 }
 
 .ios {
   --f7-toolbar-bg-color-rgb: 255, 255, 255;
-  --f7-link-highlight-color-rgb: 209, 8, 18;
-  --f7-link-color: var(--ednex-dark);
-  --f7-link-color-rgb: 26, 26, 26;
+  --f7-link-highlight-color-rgb: 185, 138, 47;
+  --f7-link-color: var(--tps-dark);
+  --f7-link-color-rgb: 19, 19, 19;
 
-  --f7-input-text-color: var(--ednex-dark);
+  --f7-input-text-color: var(--tps-dark);
   --f7-input-placeholder-color: #888888;
-  --f7-input-bg-color: var(--ednex-white);
-  --f7-input-border-color: var(--ednex-border);
+  --f7-input-bg-color: var(--tps-white);
+  --f7-input-border-color: var(--tps-border);
   --f7-input-border-width: 1px;
   --f7-input-border-radius: 8px;
   --f7-input-height: 48px;
@@ -113,14 +112,14 @@
   --f7-input-padding-right: 14px;
   --f7-list-item-padding-horizontal: 16px;
 
-  --f7-navbar-bg-color: var(--ednex-white);
+  --f7-navbar-bg-color: var(--tps-white);
   --f7-navbar-height: 0px;
   --f7-navbar-font-size: 16px;
   --f7-navbar-title-font-size: inherit;
   --f7-navbar-inner-padding-left: 8px;
   --f7-navbar-inner-padding-right: 8px;
   --f7-navbar-title-font-weight: 600;
-  --f7-navbar-link-color: var(--ednex-dark);
+  --f7-navbar-link-color: var(--tps-dark);
 
   #framework7-root {
     .md .item-input .item-content,
@@ -148,13 +147,13 @@ html {
 }
 
 body {
-  --bs-body-font-family: var(--ednex-font-body);
-  font-family: var(--ednex-font-body);
+  --bs-body-font-family: var(--tps-font-body);
+  font-family: var(--tps-font-body);
   font-weight: 400;
   --f7-button-font-weight: 600;
   max-height: none;
-  background: var(--ednex-white);
-  color: var(--ednex-dark);
+  background: var(--tps-white);
+  color: var(--tps-dark);
 }
 
 /* Keep local fonts as fallback; Google Fonts loaded in index.html */
