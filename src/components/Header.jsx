@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import navigate, {
+import {
   scrollToSection,
   getHeaderScrollOffset,
 } from "./action/navigate";
@@ -21,7 +21,8 @@ function Header() {
 
   const handleNavClick = useCallback((e, sectionId) => {
     e.preventDefault();
-    navigate(`#${sectionId}`);
+    e.stopPropagation();
+    scrollToSection(sectionId);
     setActive(sectionId);
     setMenuOpen(false);
   }, []);

@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 
 const SCROLL_CHAIN_IDS = ["app", "framework7-root"];
+const SCROLL_CHAIN_SELECTORS = [
+  ".views",
+  ".view",
+  ".pages",
+  ".tps-layout",
+  ".tps-page.page",
+  ".tps-page .page-content",
+];
 
 /**
  * Framework7 App sets #app { height: 100% } and traps scroll in .page / .page-content.
@@ -18,18 +26,19 @@ export function applyEdnexDocumentScroll() {
     el.style.overflowX = "hidden";
   });
 
-  document.querySelectorAll(".tps-page.page").forEach((page) => {
-    page.style.position = "relative";
-    page.style.top = "auto";
-    page.style.left = "auto";
-    page.style.height = "auto";
-    page.style.minHeight = "100vh";
-    page.style.overflow = "visible";
-  });
-
-  document.querySelectorAll(".tps-page .page-content").forEach((el) => {
-    el.style.height = "auto";
-    el.style.overflow = "visible";
+  SCROLL_CHAIN_SELECTORS.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.style.position = "relative";
+      el.style.top = "auto";
+      el.style.left = "auto";
+      el.style.height = "auto";
+      el.style.minHeight = selector.includes("page-content") ? "0" : "100vh";
+      el.style.overflow = "visible";
+      if (el.classList?.contains("page")) {
+        el.style.width = "100%";
+        el.style.transform = "none";
+      }
+    });
   });
 }
 
@@ -43,6 +52,18 @@ export function clearEdnexDocumentScroll() {
     el.style.overflow = "";
     el.style.overflowX = "";
   });
+  SCROLL_CHAIN_SELECTORS.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.style.position = "";
+      el.style.top = "";
+      el.style.left = "";
+      el.style.height = "";
+      el.style.minHeight = "";
+      el.style.overflow = "";
+      el.style.width = "";
+      el.style.transform = "";
+    });
+  });
 }
 
 export default function useEdnexDocumentScroll() {
@@ -50,10 +71,12 @@ export default function useEdnexDocumentScroll() {
     applyEdnexDocumentScroll();
     const t1 = window.setTimeout(applyEdnexDocumentScroll, 0);
     const t2 = window.setTimeout(applyEdnexDocumentScroll, 100);
+    const t3 = window.setTimeout(applyEdnexDocumentScroll, 500);
 
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
+      window.clearTimeout(t3);
       clearEdnexDocumentScroll();
     };
   }, []);

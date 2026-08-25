@@ -16,6 +16,46 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Document scroll — override Framework7 viewport trap */
+html.tps-landing,
+html.tps-landing body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+html.tps-landing #app,
+html.tps-landing #framework7-root,
+html.tps-landing .views,
+html.tps-landing .view,
+html.tps-landing .pages,
+html.tps-landing .tps-layout {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+html.tps-landing .tps-page.page {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+html.tps-landing .tps-page .page-content {
+  background: var(--ivory) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding-top: 0 !important;
+}
+
 .tps-page .page-content,
 .tps-layout {
   background: var(--ivory);

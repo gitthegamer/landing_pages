@@ -11,9 +11,19 @@ export function getHeaderScrollOffset() {
 }
 
 /**
- * Scroll container for the landing page (document scroll, not F7 trap).
+ * Find nearest scrollable ancestor (Framework7 may trap scroll on .page).
  */
-export function getEdnexScrollRoot() {
+function getScrollableParent(el) {
+  let node = el?.parentElement;
+  while (node && node !== document.body && node !== document.documentElement) {
+    const style = window.getComputedStyle(node);
+    const overflowY = style.overflowY;
+    const canScroll =
+      (overflowY === "auto" || overflowY === "scroll" || overflowY === "overlay") &&
+      node.scrollHeight > node.clientHeight + 1;
+    if (canScroll) return node;
+    node = node.parentElement;
+  }
   return document.scrollingElement || document.documentElement;
 }
 
@@ -27,8 +37,21 @@ export function scrollToSection(sectionId) {
   if (!target) return;
 
   const offset = getHeaderScrollOffset();
-  const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  const scrollRoot = getScrollableParent(target);
+  const isDocumentScroll =
+    scrollRoot === document.scrollingElement ||
+    scrollRoot === document.documentElement ||
+    scrollRoot === document.body;
+
+  if (isDocumentScroll) {
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  } else {
+    const parentTop = scrollRoot.getBoundingClientRect().top;
+    const targetTop = target.getBoundingClientRect().top;
+    const top = scrollRoot.scrollTop + (targetTop - parentTop) - offset;
+    scrollRoot.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
 
   const hash = `#${id}`;
   if (window.location.hash !== hash) {
