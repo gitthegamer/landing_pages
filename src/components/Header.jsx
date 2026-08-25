@@ -6,6 +6,7 @@ import {
   getHeaderScrollOffset,
 } from "./action/navigate";
 import { setLanguage } from "./action/preferences";
+import i18n from "../i18n";
 import LanguageState from "../atoms/LanguageState";
 import { TPS_LANGS, TPS_NAV } from "../data/tpsContent";
 
@@ -18,11 +19,15 @@ const SECTION_IDS = [
 ];
 
 function Header() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n: i18nHook } = useTranslation();
   const [lang, setLang] = useRecoilState(LanguageState);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+
+  const activeLang = (lang || i18nHook.language || i18n.language || "en").split(
+    "-",
+  )[0];
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
@@ -42,16 +47,28 @@ function Header() {
 
   const handleLanguageChange = useCallback(
     async (code) => {
-      if (code === i18n.language) {
-        setLangOpen(false);
+      const next = String(code || "en").toLowerCase();
+      if (!["en", "cn", "bm"].includes(next)) return;
+
+      setLangOpen(false);
+      setMenuOpen(false);
+
+      try {
+        await i18n.changeLanguage(next);
+        setLang(next);
+      } catch (error) {
+        console.error("Failed to change language", error);
         return;
       }
-      await setLanguage(code);
-      await i18n.changeLanguage(code);
-      setLang(code);
-      setLangOpen(false);
+
+      try {
+        await setLanguage(next);
+      } catch (error) {
+        // Preferences may fail on some web contexts; UI language still switched.
+        console.warn("Failed to persist language", error);
+      }
     },
-    [i18n, setLang],
+    [setLang],
   );
 
   useEffect(() => {
@@ -137,8 +154,7 @@ function Header() {
   }, [langOpen]);
 
   const currentLang =
-    TPS_LANGS.find((item) => item.code === (lang || i18n.language)) ||
-    TPS_LANGS[0];
+    TPS_LANGS.find((item) => item.code === activeLang) || TPS_LANGS[0];
 
   return (
     <>
@@ -194,7 +210,11 @@ function Header() {
                 className="lang-switch-btn"
                 aria-label={t("tps.lang.label")}
                 aria-expanded={langOpen}
-                onClick={() => setLangOpen((open) => !open)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLangOpen((open) => !open);
+                }}
               >
                 {currentLang.label}
                 <span aria-hidden>⌄</span>
@@ -208,7 +228,11 @@ function Header() {
                         className={
                           item.code === currentLang.code ? "is-active" : ""
                         }
-                        onClick={() => handleLanguageChange(item.code)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleLanguageChange(item.code);
+                        }}
                       >
                         {item.label}
                       </button>

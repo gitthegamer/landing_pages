@@ -1,10 +1,8 @@
 import { f7 } from "framework7-react";
 import LoginModal from "./modal/login-modal";
 import ConfirmMessage from "./modal/confirm-message";
-import { useTranslation, initReactI18next } from "react-i18next";
-import en from "./../lng/en.json";
-import cn from "./../lng/cn.json";
-import bm from "./../lng/bm.json";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 import {
   RouterProvider,
@@ -20,41 +18,26 @@ import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 
 const MyApp = () => {
-  const { i18n, t } = useTranslation();
-
-
-  const resources = {
-    en: { translation: en },
-    cn: { translation: cn },
-    bm: { translation: bm },
-  };
+  const { t, i18n: i18nHook } = useTranslation();
   const [lang, setLang] = useRecoilState(LanguageState);
-  //init i18n and translate f7 button
+
   useEffect(() => {
-    const initializeI18n = async () => {
+    const initializeLanguage = async () => {
       try {
         const language = (await getLanguage()) ?? "en";
+        const resolved = ["en", "cn", "bm"].includes(language) ? language : "en";
+        await i18n.changeLanguage(resolved);
+        setLang(resolved);
+      } catch (error) {
+        setLang("en");
+      }
 
-        await i18n.use(initReactI18next).init({
-          resources,
-          lng: language,
-          fallbackLng: "en",
-          supportedLngs: ["en", "cn", "bm"],
-          interpolation: {
-            escapeValue: false,
-          },
-        });
-
-        setLang(language);
-      } catch (error) {}
+      f7.params.dialog.buttonOk = i18n.t("Confirm");
+      f7.params.dialog.buttonCancel = i18n.t("Cancel");
     };
 
-    initializeI18n().then(() => {
-      /* After i18n init , translate button text */
-      f7.params.dialog.buttonOk = t("Confirm");
-      f7.params.dialog.buttonCancel = t("Cancel");
-    });
-  }, []);
+    initializeLanguage();
+  }, [setLang]);
 
   //Global will fecth when language change
 
@@ -72,7 +55,7 @@ const MyApp = () => {
     };
 
     fetchGlobal();
-  }, [i18n.language]);
+  }, [i18nHook.language]);
 
   const router = createBrowserRouter(routes);
 
@@ -92,7 +75,7 @@ const MyApp = () => {
     };
 
     forceTokenLogin();
-  }, [i18n.language]);
+  }, [i18nHook.language]);
 
   /* =========================================================== */
 

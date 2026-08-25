@@ -10,14 +10,20 @@ const resources = {
   bm: { translation: bm },
 };
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: "en",
-  fallbackLng: "en",
-  supportedLngs: ["en", "cn", "bm"],
-  interpolation: {
-    escapeValue: false,
-  },
-});
+if (!i18n.isInitialized) {
+  i18n.use(initReactI18next).init({
+    resources,
+    lng: "en",
+    fallbackLng: "en",
+    supportedLngs: ["en", "cn", "bm"],
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+} else {
+  Object.entries(resources).forEach(([lng, bundle]) => {
+    i18n.addResourceBundle(lng, "translation", bundle.translation, true, true);
+  });
+}
 
 export default i18n;

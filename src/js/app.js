@@ -24,6 +24,7 @@ import "../css/web.scss";
 
 // Import App Component
 import "../library/Axios.jsx";
+import "../i18n.jsx";
 import Main from "../components/main.jsx";
 // Init F7 React Plugin
 Framework7.use(Framework7React);
