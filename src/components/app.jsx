@@ -3,6 +3,8 @@ import LoginModal from "./modal/login-modal";
 import ConfirmMessage from "./modal/confirm-message";
 import { useTranslation, initReactI18next } from "react-i18next";
 import en from "./../lng/en.json";
+import cn from "./../lng/cn.json";
+import bm from "./../lng/bm.json";
 
 import {
   RouterProvider,
@@ -23,8 +25,8 @@ const MyApp = () => {
 
   const resources = {
     en: { translation: en },
-    // cn: { translation: cn },
-    // bm: { translation: bm },
+    cn: { translation: cn },
+    bm: { translation: bm },
   };
   const [lang, setLang] = useRecoilState(LanguageState);
   //init i18n and translate f7 button

@@ -1,15 +1,29 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 import navigate from "../action/navigate";
-import { TPS_STATS } from "../../data/tpsContent";
+import { TPS_CHAMPIONS, TPS_STATS } from "../../data/tpsContent";
+
+function ChampLogo({ champ }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return <span className="sponsor-word">{champ.logoAlt}</span>;
+  }
+  return (
+    <img
+      src={champ.logo}
+      alt={champ.logoAlt}
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 export default function HeroSlider() {
-  const goRankings = useCallback(
-    (e) => {
-      e.preventDefault();
-      navigate("#rankings");
-    },
-    [],
-  );
+  const { t } = useTranslation();
+
+  const goRankings = useCallback((e) => {
+    e.preventDefault();
+    navigate("#rankings");
+  }, []);
 
   return (
     <section className="hero">
@@ -25,24 +39,48 @@ export default function HeroSlider() {
       />
       <div className="hero-overlay" />
       <div className="wrap hero-content">
-        <div className="eyebrow">PREMIUM PLAYER-POWERED RANKINGS · DEMO</div>
-        <h1>THE PLAY STANDARD</h1>
+        <div className="eyebrow">{t("tps.hero.eyebrow")}</div>
+        <div className="category-kicker">{t("tps.hero.categoryKicker")}</div>
+        <div className="category-title">{t("tps.hero.categoryTitle")}</div>
+        <div className="category-sub">{t("tps.hero.categorySub")}</div>
+
+        <div className="champion-banner" aria-label="Category winners demo">
+          {TPS_CHAMPIONS.map((champ) => (
+            <div
+              key={champ.id}
+              className={`champ${champ.featured ? " featured" : ""}`}
+            >
+              <div className="award-icon">{champ.icon}</div>
+              <div className="champ-label">{t(champ.labelKey)}</div>
+              <div className="champ-logo">
+                <ChampLogo champ={champ} />
+              </div>
+              <div className="award-name">{t(champ.nameKey)}</div>
+              <div className="award-desc">{t(champ.descKey)}</div>
+              <div className="award-tag">{t(champ.tagKey)}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="champion-note">{t("tps.hero.championNote")}</div>
+
+        <h1>{t("tps.brand")}</h1>
         <div className="orn">—— ♛ ——</div>
         <h2>
-          Where Players
+          {t("tps.hero.h2a")}
           <br />
-          Set <em>the</em> Standard.
+          {t("tps.hero.h2b")} <em>{t("tps.hero.h2em")}</em> {t("tps.hero.h2c")}
         </h2>
-        <p>Independent rankings shaped by real player votes.</p>
+        <p>{t("tps.hero.p")}</p>
         <a className="cta" href="#rankings" onClick={goRankings}>
-          EXPLORE RANKINGS&nbsp; →
+          {t("tps.hero.cta")}
         </a>
         <div className="stats">
           {TPS_STATS.map((stat) => (
-            <div key={stat.label} className="stat">
+            <div key={stat.labelKey} className="stat">
               <b>{stat.value}</b>
-              <span>{stat.label}</span>
-              <i className="demo">{stat.note}</i>
+              <span>{t(stat.labelKey)}</span>
+              <i className="demo">{t(stat.noteKey)}</i>
             </div>
           ))}
         </div>

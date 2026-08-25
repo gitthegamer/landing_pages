@@ -6,8 +6,8 @@ import bm from "./lng/bm.json";
 
 const resources = {
   en: { translation: en },
-  // cn: { translation: cn },
-  // bm: { translation: bm },
+  cn: { translation: cn },
+  bm: { translation: bm },
 };
 
 i18n.use(initReactI18next).init({

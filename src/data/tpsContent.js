@@ -1,92 +1,173 @@
 export const TPS_NAV = [
-  { id: "rankings", label: "RANKINGS⌄" },
-  { id: "methodology", label: "METHODOLOGY" },
-  { id: "about", label: "ABOUT" },
-  { id: "responsible", label: "RESPONSIBLE GAMING" },
+  { id: "rankings", labelKey: "tps.nav.rankings" },
+  { id: "methodology", labelKey: "tps.nav.methodology" },
+  { id: "about", labelKey: "tps.nav.about" },
+  { id: "responsible", labelKey: "tps.nav.responsible" },
+];
+
+export const TPS_LANGS = [
+  { code: "en", label: "EN" },
+  { code: "bm", label: "BM" },
+  { code: "cn", label: "CN" },
+];
+
+export const TPS_SPONSORS = [
+  {
+    name: "LG",
+    wordClass: "lg",
+    logo: "https://logo.clearbit.com/lg.com",
+  },
+  {
+    name: "Hisense",
+    wordClass: "hisense",
+    logo: "https://logo.clearbit.com/hisense.com",
+  },
+  {
+    name: "Digi",
+    wordClass: "digi",
+    logo: "https://logo.clearbit.com/digi.com.my",
+  },
+  {
+    name: "EcoWorld",
+    wordClass: "eco",
+    logo: "https://logo.clearbit.com/ecoworld.my",
+  },
+  {
+    name: "PETRONAS",
+    wordClass: "petronas",
+    logo: "https://logo.clearbit.com/petronas.com",
+  },
+  {
+    name: "SAMSUNG",
+    wordClass: "",
+    logo: "https://logo.clearbit.com/samsung.com",
+  },
 ];
 
 export const TPS_STATS = [
-  { value: "18,429", label: "Player Votes", note: "Demo Data" },
-  { value: "10", label: "Platforms", note: "Demo Data" },
-  { value: "Monthly", label: "Ranking Update", note: "Concept" },
+  { value: "18,429", labelKey: "tps.stats.votes", noteKey: "tps.stats.demo" },
+  { value: "10", labelKey: "tps.stats.platforms", noteKey: "tps.stats.demo" },
+  {
+    value: "Monthly",
+    labelKey: "tps.stats.update",
+    noteKey: "tps.stats.concept",
+  },
+];
+
+export const TPS_CHAMPIONS = [
+  {
+    id: "rewards",
+    featured: false,
+    icon: "★",
+    labelKey: "tps.champ.rewards.label",
+    nameKey: "tps.champ.rewards.name",
+    descKey: "tps.champ.rewards.desc",
+    tagKey: "tps.champ.rewards.tag",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/77/BK8_Official_Logo.png",
+    logoAlt: "BK8 logo",
+  },
+  {
+    id: "played",
+    featured: true,
+    icon: "♛",
+    labelKey: "tps.champ.played.label",
+    nameKey: "tps.champ.played.name",
+    descKey: "tps.champ.played.desc",
+    tagKey: "tps.champ.played.tag",
+    logo: "https://cdn.allsquaregolf.com/pictures/pictures/001/433/832/large/user_74244_profile_picture.jpg",
+    logoAlt: "Winbox Malaysia logo",
+  },
+  {
+    id: "young",
+    featured: false,
+    icon: "⚡",
+    labelKey: "tps.champ.young.label",
+    nameKey: "tps.champ.young.name",
+    descKey: "tps.champ.young.desc",
+    tagKey: "tps.champ.young.tag",
+    logo: "https://pbs.twimg.com/profile_images/1707343063981678592/IHza81X3_400x400.jpg",
+    logoAlt: "sureWin logo",
+  },
 ];
 
 export const TPS_RANKINGS = [
   {
     rank: "01",
-    title: "HOT INDEX",
-    desc: "What players are choosing right now.",
+    titleKey: "tps.rank.hot.title",
+    descKey: "tps.rank.hot.desc",
     image: "/assets/image/tps/rank-hot-index.jpg",
     alt: "Hot Index casino visual",
   },
   {
     rank: "02",
-    title: "PAYOUT EXPERIENCE",
-    desc: "Rated by players based on their payout experience.",
+    titleKey: "tps.rank.payout.title",
+    descKey: "tps.rank.payout.desc",
     image: "/assets/image/tps/rank-payout.jpg",
     alt: "Payout Experience visual",
   },
   {
     rank: "03",
-    title: "TPS OVERALL",
-    desc: "The overall player choice across all factors.",
+    titleKey: "tps.rank.overall.title",
+    descKey: "tps.rank.overall.desc",
     image: "/assets/image/tps/rank-overall.jpg",
     alt: "TPS Overall casino visual",
   },
 ];
 
 export const TPS_FEATURE = {
-  monthLabel: "THIS MONTH'S",
+  monthLabelKey: "tps.feature.month",
   monthRank: "#1",
   platformImage: "/assets/image/tps/feature-platform.jpg",
   platformAlt: "Platform A demo",
   score: 92,
   scoreMax: 100,
   stars: "★★★★★",
-  votesLabel: "12,482 verified votes",
-  votesNote: "(Demo Data)",
-  overall: "#01 Overall",
+  scoreLabelKey: "tps.feature.scoreLabel",
+  votesLabelKey: "tps.feature.votes",
+  votesNoteKey: "tps.feature.votesNote",
+  overallKey: "tps.feature.overall",
   move: "↑ 2",
-  moveLabel: "positions this month",
+  moveLabelKey: "tps.feature.moveLabel",
+  ctaKey: "tps.feature.cta",
 };
 
 export const TPS_STEPS = [
   {
     icon: "●",
     num: "01",
-    title: "PLAYERS VOTE",
-    desc: "Real players share their experience by voting for platforms they use.",
+    titleKey: "tps.how.1.title",
+    descKey: "tps.how.1.desc",
   },
   {
     icon: "◈",
     num: "02",
-    title: "VOTES ARE CHECKED",
-    desc: "Suspicious, duplicate, and automated voting patterns are flagged before inclusion.",
+    titleKey: "tps.how.2.title",
+    descKey: "tps.how.2.desc",
   },
   {
     icon: "↗",
     num: "03",
-    title: "RANKINGS UPDATE",
-    desc: "Rankings are recalculated on a published schedule using validated player votes.",
+    titleKey: "tps.how.3.title",
+    descKey: "tps.how.3.desc",
   },
 ];
 
 export const TPS_FOOTER = {
   rankings: [
-    { label: "Hot Index", href: "#rankings" },
-    { label: "Payout Experience", href: "#rankings" },
-    { label: "TPS Overall", href: "#rankings" },
-    { label: "All Rankings", href: "#rankings" },
+    { labelKey: "tps.footer.hotIndex", href: "#rankings" },
+    { labelKey: "tps.footer.payout", href: "#rankings" },
+    { labelKey: "tps.footer.tpsOverall", href: "#rankings" },
+    { labelKey: "tps.footer.allRankings", href: "#rankings" },
   ],
   information: [
-    { label: "Methodology", href: "#methodology" },
-    { label: "Voting Rules", href: "#" },
-    { label: "About Us", href: "#" },
-    { label: "FAQ", href: "#" },
+    { labelKey: "tps.footer.methodology", href: "#methodology" },
+    { labelKey: "tps.footer.votingRules", href: "#" },
+    { labelKey: "tps.footer.aboutUs", href: "#" },
+    { labelKey: "tps.footer.faq", href: "#" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Responsible Gaming", href: "#" },
+    { labelKey: "tps.footer.privacy", href: "#" },
+    { labelKey: "tps.footer.terms", href: "#" },
+    { labelKey: "tps.footer.responsible", href: "#" },
   ],
 };

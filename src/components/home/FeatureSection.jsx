@@ -1,8 +1,11 @@
 import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import navigate from "../action/navigate";
 import { TPS_FEATURE } from "../../data/tpsContent";
 
 export default function FeatureSection() {
+  const { t } = useTranslation();
+
   const goMethodology = useCallback((e) => {
     e.preventDefault();
     navigate("#methodology");
@@ -15,29 +18,29 @@ export default function FeatureSection() {
       <div className="wrap">
         <div className="featurebox">
           <div className="month">
-            <small>{f.monthLabel}</small>
+            <small>{t(f.monthLabelKey)}</small>
             <b>{f.monthRank}</b>
           </div>
           <div className="platform-img">
             <img src={f.platformImage} alt={f.platformAlt} />
           </div>
           <div className="score">
-            <div className="label">TPS SCORE</div>
+            <div className="label">{t(f.scoreLabelKey)}</div>
             <div>
               <b>{f.score}</b>
               <span>/{f.scoreMax}</span>
             </div>
             <div className="stars">{f.stars}</div>
             <small>
-              {f.votesLabel} <em>{f.votesNote}</em>
+              {t(f.votesLabelKey)} <em>{t(f.votesNoteKey)}</em>
             </small>
           </div>
           <div className="move">
-            <strong>{f.overall}</strong>
+            <strong>{t(f.overallKey)}</strong>
             <div className="up">{f.move}</div>
-            <span>{f.moveLabel}</span>
+            <span>{t(f.moveLabelKey)}</span>
             <a className="cta" href="#methodology" onClick={goMethodology}>
-              VIEW FULL RANKING →
+              {t(f.ctaKey)}
             </a>
           </div>
         </div>

@@ -1,9 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useRecoilState } from "recoil";
 import {
   scrollToSection,
   getHeaderScrollOffset,
 } from "./action/navigate";
-import { TPS_NAV } from "../data/tpsContent";
+import { setLanguage } from "./action/preferences";
+import LanguageState from "../atoms/LanguageState";
+import { TPS_LANGS, TPS_NAV } from "../data/tpsContent";
 
 const SECTION_IDS = [
   "rankings",
@@ -14,8 +18,11 @@ const SECTION_IDS = [
 ];
 
 function Header() {
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useRecoilState(LanguageState);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
@@ -25,11 +32,27 @@ function Header() {
     scrollToSection(sectionId);
     setActive(sectionId);
     setMenuOpen(false);
+    setLangOpen(false);
   }, []);
 
   const toggleMenu = useCallback(() => {
     setMenuOpen((open) => !open);
+    setLangOpen(false);
   }, []);
+
+  const handleLanguageChange = useCallback(
+    async (code) => {
+      if (code === i18n.language) {
+        setLangOpen(false);
+        return;
+      }
+      await setLanguage(code);
+      await i18n.changeLanguage(code);
+      setLang(code);
+      setLangOpen(false);
+    },
+    [i18n, setLang],
+  );
 
   useEffect(() => {
     const topbar = document.querySelector(".tps-site .topbar");
@@ -106,12 +129,23 @@ function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, [closeMenu]);
 
+  useEffect(() => {
+    if (!langOpen) return undefined;
+    const onDocClick = () => setLangOpen(false);
+    window.addEventListener("click", onDocClick);
+    return () => window.removeEventListener("click", onDocClick);
+  }, [langOpen]);
+
+  const currentLang =
+    TPS_LANGS.find((item) => item.code === (lang || i18n.language)) ||
+    TPS_LANGS[0];
+
   return (
     <>
       <header className="topbar">
         <div className="wrap nav">
           <div
-            className="brand"
+            className="brand-lockup"
             role="button"
             tabIndex={0}
             onClick={() => {
@@ -127,15 +161,16 @@ function Header() {
             }}
           >
             <img
-              className="brand-logo"
+              className="brand-mark"
               src="/assets/image/logo/logo.png"
-              alt="The Play Standard"
+              alt="The Play Standard logo"
             />
-            <span className="brand-text">
-              THE PLAY STANDARD
-              <small>RANKED BY PLAYERS. BUILT ON TRUST.</small>
-            </span>
+            <div className="brand-copy">
+              {t("tps.brand")}
+              <small>{t("tps.brandTagline")}</small>
+            </div>
           </div>
+
           <nav className="navlinks">
             {TPS_NAV.map((item) => (
               <a
@@ -144,29 +179,66 @@ function Header() {
                 className={active === item.id ? "is-active" : ""}
                 onClick={(e) => handleNavClick(e, item.id)}
               >
-                {item.label}
+                {t(item.labelKey)}
               </a>
             ))}
           </nav>
-          <a
-            className="vote-now"
-            href="#rankings"
-            onClick={(e) => handleNavClick(e, "rankings")}
-          >
-            ♔ VOTE NOW
-          </a>
-          <button
-            type="button"
-            className={`menu-toggle${menuOpen ? " is-open" : ""}`}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            aria-controls="tps-mobile-nav"
-            onClick={toggleMenu}
-          >
-            <span className="menu-toggle-bar" />
-            <span className="menu-toggle-bar" />
-            <span className="menu-toggle-bar" />
-          </button>
+
+          <div className="nav-actions">
+            <div
+              className={`lang-switch${langOpen ? " is-open" : ""}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="lang-switch-btn"
+                aria-label={t("tps.lang.label")}
+                aria-expanded={langOpen}
+                onClick={() => setLangOpen((open) => !open)}
+              >
+                {currentLang.label}
+                <span aria-hidden>⌄</span>
+              </button>
+              {langOpen && (
+                <ul className="lang-switch-menu" role="listbox">
+                  {TPS_LANGS.map((item) => (
+                    <li key={item.code}>
+                      <button
+                        type="button"
+                        className={
+                          item.code === currentLang.code ? "is-active" : ""
+                        }
+                        onClick={() => handleLanguageChange(item.code)}
+                      >
+                        {item.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <a
+              className="vote-now"
+              href="#rankings"
+              onClick={(e) => handleNavClick(e, "rankings")}
+            >
+              {t("tps.voteNow")}
+            </a>
+
+            <button
+              type="button"
+              className={`menu-toggle${menuOpen ? " is-open" : ""}`}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="tps-mobile-nav"
+              onClick={toggleMenu}
+            >
+              <span className="menu-toggle-bar" />
+              <span className="menu-toggle-bar" />
+              <span className="menu-toggle-bar" />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -188,17 +260,29 @@ function Header() {
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
               >
-                {item.label}
+                {t(item.labelKey)}
               </a>
             </li>
           ))}
         </ul>
+        <div className="mobile-lang">
+          {TPS_LANGS.map((item) => (
+            <button
+              key={item.code}
+              type="button"
+              className={item.code === currentLang.code ? "is-active" : ""}
+              onClick={() => handleLanguageChange(item.code)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
         <a
           className="vote-now mobile-vote"
           href="#rankings"
           onClick={(e) => handleNavClick(e, "rankings")}
         >
-          ♔ VOTE NOW
+          {t("tps.voteNow")}
         </a>
       </nav>
     </>

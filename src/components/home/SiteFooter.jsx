@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import navigate from "../action/navigate";
 import { TPS_FOOTER } from "../../data/tpsContent";
 
 export default function SiteFooter() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleNav = (e, href) => {
@@ -27,55 +29,51 @@ export default function SiteFooter() {
               <br />
               PLAY STANDARD
             </div>
-            <p>
-              Independent. Transparent.
-              <br />
-              Player-powered.
-            </p>
+            <p style={{ whiteSpace: "pre-line" }}>{t("tps.footer.tagline")}</p>
           </div>
           <div>
-            <h5>RANKINGS</h5>
+            <h5>{t("tps.footer.rankings")}</h5>
             {TPS_FOOTER.rankings.map((link) => (
               <a
-                key={link.label}
+                key={link.labelKey}
                 href={link.href}
                 onClick={(e) => handleNav(e, link.href)}
               >
-                {link.label}
+                {t(link.labelKey)}
               </a>
             ))}
           </div>
           <div>
-            <h5>INFORMATION</h5>
+            <h5>{t("tps.footer.information")}</h5>
             {TPS_FOOTER.information.map((link) => (
               <a
-                key={link.label}
+                key={link.labelKey}
                 href={link.href}
                 onClick={(e) => handleNav(e, link.href)}
               >
-                {link.label}
+                {t(link.labelKey)}
               </a>
             ))}
           </div>
           <div id="responsible">
-            <h5>LEGAL</h5>
+            <h5>{t("tps.footer.legal")}</h5>
             {TPS_FOOTER.legal.map((link) => (
               <a
-                key={link.label}
+                key={link.labelKey}
                 href={link.href}
                 onClick={(e) => handleNav(e, link.href)}
               >
-                {link.label}
+                {t(link.labelKey)}
               </a>
             ))}
           </div>
           <div>
-            <h5>STAY UPDATED</h5>
-            <p>Get monthly ranking updates and platform insights.</p>
+            <h5>{t("tps.footer.stay")}</h5>
+            <p>{t("tps.footer.stayDesc")}</p>
             <form className="email" onSubmit={handleSubscribe}>
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t("tps.footer.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 aria-label="Email"
@@ -84,9 +82,7 @@ export default function SiteFooter() {
             </form>
           </div>
         </div>
-        <div className="copyright">
-          © 2026 The Play Standard · Demo Website for Preview Purposes Only
-        </div>
+        <div className="copyright">{t("tps.footer.copyright")}</div>
       </div>
     </footer>
   );

@@ -99,44 +99,43 @@ html.tps-landing .tps-page .page-content {
   }
 
   .nav {
-    height: 78px;
+    height: 84px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 18px;
   }
 
-  .brand {
+  .brand-lockup {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: Georgia, serif;
-    font-size: 21px;
-    letter-spacing: 0.05em;
+    min-width: 270px;
     cursor: pointer;
     flex-shrink: 0;
-    margin-right: auto;
+  }
 
-    .brand-logo {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      display: block;
-      flex-shrink: 0;
-    }
+  .brand-mark {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 5px 10px rgba(99, 68, 15, 0.18));
+  }
 
-    .brand-text {
-      display: block;
-      line-height: 1.1;
-    }
+  .brand-copy {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 0.045em;
+    line-height: 1.05;
 
     small {
       display: block;
       font-family: Inter, sans-serif;
-      font-size: 8px;
-      letter-spacing: 0.17em;
+      font-size: 7px;
+      letter-spacing: 0.18em;
       color: #9a7126;
-      margin-top: 3px;
+      margin-top: 5px;
     }
   }
 
@@ -151,6 +150,66 @@ html.tps-landing .tps-page .page-content {
       &:hover,
       &.is-active {
         color: #9a7126;
+      }
+    }
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .lang-switch {
+    position: relative;
+  }
+
+  .lang-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 12px;
+    border: 1px solid rgba(185, 138, 47, 0.45);
+    border-radius: 4px;
+    background: rgba(255, 253, 248, 0.9);
+    color: #8c641f;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+  }
+
+  .lang-switch-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    min-width: 84px;
+    background: var(--paper);
+    border: 1px solid rgba(185, 138, 47, 0.28);
+    border-radius: 6px;
+    box-shadow: 0 12px 28px rgba(52, 38, 16, 0.14);
+    z-index: 70;
+
+    button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover,
+      &.is-active {
+        background: rgba(185, 138, 47, 0.12);
+        color: #8c641f;
       }
     }
   }
@@ -266,6 +325,347 @@ html.tps-landing .tps-page .page-content {
   .mobile-vote {
     display: block;
     text-align: center;
+  }
+
+  .mobile-lang {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+
+    button {
+      flex: 1;
+      border: 1px solid rgba(185, 138, 47, 0.35);
+      border-radius: 4px;
+      background: transparent;
+      padding: 10px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #8c641f;
+      cursor: pointer;
+
+      &.is-active {
+        background: linear-gradient(90deg, #b7852b, #d2ab56);
+        color: #fff;
+        border-color: transparent;
+      }
+    }
+  }
+
+  /* Sponsor marquee */
+  .sponsor-bar {
+    position: relative;
+    z-index: 30;
+    background: rgba(255, 253, 248, 0.96);
+    border-bottom: 1px solid rgba(185, 138, 47, 0.2);
+    overflow: hidden;
+  }
+
+  .sponsor-shell {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 16px;
+    height: 92px;
+  }
+
+  .sponsor-label {
+    padding-left: max(18px, calc((100vw - 1180px) / 2));
+    padding-right: 18px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(185, 138, 47, 0.2);
+
+    b {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #8b6421;
+      letter-spacing: 0.08em;
+    }
+
+    span {
+      display: block;
+      margin-top: 4px;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      color: #9a9488;
+    }
+  }
+
+  .sponsor-window {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+  }
+
+  .sponsor-track {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    animation: tpsMarquee 28s linear infinite;
+    padding: 10px 0;
+  }
+
+  .sponsor-window:hover .sponsor-track {
+    animation-play-state: paused;
+  }
+
+  .sponsor-card {
+    width: 190px;
+    height: 58px;
+    border: 1px solid rgba(185, 138, 47, 0.2);
+    background: linear-gradient(180deg, #fffefa, #f9f4e8);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    box-shadow: 0 8px 24px rgba(60, 40, 8, 0.07);
+    transition: 0.22s;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 15%,
+        rgba(255, 255, 255, 0.72) 44%,
+        transparent 68%
+      );
+      transform: translateX(-150%);
+      transition: 0.7s;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: rgba(185, 138, 47, 0.48);
+      box-shadow: 0 12px 28px rgba(60, 40, 8, 0.13);
+
+      &:after {
+        transform: translateX(150%);
+      }
+    }
+
+    img {
+      max-width: 142px;
+      max-height: 38px;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  .sponsor-word {
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    color: #222;
+
+    &.digi {
+      color: #159bd7;
+    }
+
+    &.eco {
+      font-family: Georgia, serif;
+      color: #176747;
+      font-weight: 600;
+    }
+
+    &.hisense {
+      color: #00a6a6;
+    }
+
+    &.lg {
+      color: #a50034;
+    }
+
+    &.petronas {
+      color: #00a19b;
+    }
+  }
+
+  .sponsor-adtag {
+    position: absolute;
+    right: 7px;
+    top: 5px;
+    font-size: 6px;
+    letter-spacing: 0.12em;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+
+  @keyframes tpsMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - 9px));
+    }
+  }
+
+  /* Category winners */
+  .category-kicker {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: #9a7126;
+    font-weight: 800;
+    margin-top: 18px;
+  }
+
+  .category-title {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 8px 0 4px;
+    color: #17130d;
+  }
+
+  .category-sub {
+    font-size: 10px;
+    color: #73695b;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  .champion-banner {
+    max-width: 900px;
+    margin: 18px auto 9px;
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .champ {
+    position: relative;
+    min-height: 154px;
+    padding: 19px 14px 15px;
+    background: rgba(255, 253, 248, 0.88);
+    border: 1px solid rgba(185, 138, 47, 0.28);
+    border-radius: 12px;
+    box-shadow: 0 12px 34px rgba(67, 45, 12, 0.1);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #c89d4e, transparent);
+    }
+
+    &.featured {
+      transform: translateY(-8px);
+      border-color: #b98a2f;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 251, 235, 0.98),
+        rgba(247, 235, 203, 0.91)
+      );
+      box-shadow: 0 18px 46px rgba(117, 79, 13, 0.18);
+
+      .award-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #a87520, #e2c779);
+        color: #fff;
+        border: 0;
+        font-size: 18px;
+      }
+
+      .champ-logo img {
+        max-width: 154px;
+        max-height: 54px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .award-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    border: 1px solid #d2aa5a;
+    background: #fffaf0;
+    color: #9a6d1e;
+    font-size: 16px;
+    box-shadow: 0 5px 14px rgba(92, 63, 13, 0.1);
+  }
+
+  .champ-label {
+    font-size: 7px;
+    letter-spacing: 0.17em;
+    color: #9a7126;
+    font-weight: 900;
+    margin-bottom: 9px;
+    white-space: nowrap;
+  }
+
+  .champ-logo {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 7px;
+
+    img {
+      display: block;
+      max-width: 130px;
+      max-height: 46px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .award-name {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.15;
+    margin-top: 5px;
+    color: #17130d;
+  }
+
+  .award-desc {
+    font-size: 9px;
+    line-height: 1.45;
+    color: #6d6559;
+    margin-top: 7px;
+  }
+
+  .award-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 8px;
+    border: 1px solid rgba(185, 138, 47, 0.35);
+    border-radius: 999px;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #8c641f;
+    background: rgba(255, 250, 239, 0.75);
+  }
+
+  .champion-note {
+    font-size: 8px;
+    color: #8c8374;
+    letter-spacing: 0.07em;
+    margin-top: 7px;
   }
 
   .hero {
@@ -804,6 +1204,38 @@ html.tps-landing .tps-page .page-content {
       display: none;
     }
 
+    .brand-lockup {
+      min-width: auto;
+    }
+
+    .brand-copy {
+      font-size: 15px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+    }
+
+    .sponsor-shell {
+      grid-template-columns: 1fr;
+      height: 78px;
+    }
+
+    .sponsor-label {
+      display: none;
+    }
+
+    .sponsor-card {
+      width: 155px;
+      height: 50px;
+
+      img {
+        max-width: 115px;
+        max-height: 31px;
+      }
+    }
+
     .hero {
       min-height: 610px;
     }
@@ -850,23 +1282,84 @@ html.tps-landing .tps-page .page-content {
     }
   }
 
+  @media (max-width: 760px) {
+    .champion-banner {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+    }
+
+    .champ.featured {
+      transform: none;
+      order: -1;
+    }
+
+    .champ {
+      min-height: 138px;
+    }
+
+    .category-title {
+      font-size: 22px;
+    }
+  }
+
   @media (max-width: 580px) {
     .wrap {
       width: min(100% - 24px, 1180px);
     }
 
-    .brand {
-      font-size: 16px;
+    .brand-copy {
+      font-size: 13px;
 
-      .brand-logo {
-        width: 44px;
-        height: 44px;
+      small {
+        display: none;
       }
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .lang-switch-btn {
+      padding: 8px 9px;
+      font-size: 10px;
     }
 
     .vote-now {
       font-size: 10px;
       padding: 9px 11px;
+    }
+
+    .sponsor-card {
+      width: 140px;
+    }
+
+    .sponsor-shell {
+      height: 70px;
+    }
+
+    .category-title {
+      font-size: 19px;
+    }
+
+    .category-sub {
+      font-size: 9px;
+    }
+
+    .champ {
+      padding: 16px 10px 13px;
+    }
+
+    .champ-label {
+      font-size: 6px;
+    }
+
+    .award-name {
+      font-size: 15px;
+    }
+
+    .award-desc {
+      font-size: 8px;
     }
 
     .hero-content {
