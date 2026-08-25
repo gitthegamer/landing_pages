@@ -126,8 +126,15 @@ function Header() {
               }
             }}
           >
-            THE PLAY STANDARD
-            <small>RANKED BY PLAYERS. BUILT ON TRUST.</small>
+            <img
+              className="brand-logo"
+              src="/assets/image/logo/logo.png"
+              alt="The Play Standard"
+            />
+            <span className="brand-text">
+              THE PLAY STANDARD
+              <small>RANKED BY PLAYERS. BUILT ON TRUST.</small>
+            </span>
           </div>
           <nav className="navlinks">
             {TPS_NAV.map((item) => (

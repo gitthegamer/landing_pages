@@ -107,10 +107,28 @@ html.tps-landing .tps-page .page-content {
   }
 
   .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: Georgia, serif;
     font-size: 21px;
     letter-spacing: 0.05em;
     cursor: pointer;
+    flex-shrink: 0;
+    margin-right: auto;
+
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: block;
+      line-height: 1.1;
+    }
 
     small {
       display: block;
@@ -839,6 +857,11 @@ html.tps-landing .tps-page .page-content {
 
     .brand {
       font-size: 16px;
+
+      .brand-logo {
+        width: 44px;
+        height: 44px;
+      }
     }
 
     .vote-now {
