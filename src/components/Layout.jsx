@@ -3,10 +3,10 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { setNavigate } from "./action/navigate";
 import { useTranslation } from "react-i18next";
 import { useDialog } from "./action/Dialognew";
-import useTpsDocumentScroll from "./home/useTpsDocumentScroll";
+import useNpDocumentScroll from "./home/useNpDocumentScroll";
 
 const Layout = () => {
-  useTpsDocumentScroll();
+  useNpDocumentScroll();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,7 +37,7 @@ const Layout = () => {
   }, [location.search, open_message, t]);
 
   return (
-    <div className="tps-layout position-relative">
+    <div className="np-layout position-relative">
       <Outlet />
     </div>
   );

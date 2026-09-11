@@ -5,17 +5,13 @@ const SCROLL_CHAIN_SELECTORS = [
   ".views",
   ".view",
   ".pages",
-  ".tps-layout",
-  ".tps-page.page",
-  ".tps-page .page-content",
+  ".np-layout",
+  ".np-page.page",
+  ".np-page .page-content",
 ];
 
-/**
- * Framework7 App sets #app { height: 100% } and traps scroll in .page / .page-content.
- * Reset the chain so The Play Standard landing scrolls on the document.
- */
-export function applyTpsDocumentScroll() {
-  document.documentElement.classList.add("tps-landing");
+export function applyNpDocumentScroll() {
+  document.documentElement.classList.add("np-landing");
 
   SCROLL_CHAIN_IDS.forEach((id) => {
     const el = document.getElementById(id);
@@ -42,8 +38,8 @@ export function applyTpsDocumentScroll() {
   });
 }
 
-export function clearTpsDocumentScroll() {
-  document.documentElement.classList.remove("tps-landing");
+export function clearNpDocumentScroll() {
+  document.documentElement.classList.remove("np-landing");
   SCROLL_CHAIN_IDS.forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -66,18 +62,18 @@ export function clearTpsDocumentScroll() {
   });
 }
 
-export default function useTpsDocumentScroll() {
+export default function useNpDocumentScroll() {
   useEffect(() => {
-    applyTpsDocumentScroll();
-    const t1 = window.setTimeout(applyTpsDocumentScroll, 0);
-    const t2 = window.setTimeout(applyTpsDocumentScroll, 100);
-    const t3 = window.setTimeout(applyTpsDocumentScroll, 500);
+    applyNpDocumentScroll();
+    const t1 = window.setTimeout(applyNpDocumentScroll, 0);
+    const t2 = window.setTimeout(applyNpDocumentScroll, 100);
+    const t3 = window.setTimeout(applyNpDocumentScroll, 500);
 
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.clearTimeout(t3);
-      clearTpsDocumentScroll();
+      clearNpDocumentScroll();
     };
   }, []);
 }

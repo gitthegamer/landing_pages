@@ -27,19 +27,19 @@
 }
 
 :root {
-  /* The Play Standard theme */
-  --tps-gold: #b98a2f;
-  --tps-gold2: #d7b86a;
-  --tps-dark: #131313;
-  --tps-darker: #111111;
-  --tps-white: #fffdf8;
-  --tps-light: #f7f1e6;
-  --tps-muted: #655f56;
-  --tps-border: #dfd1b5;
-  --tps-font-heading: Georgia, serif;
-  --tps-font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --tps-fixed-header-height: 78px;
+  /* 7E Next Play theme */
+  --tps-gold: #ff6a00;
+  --tps-gold2: #ff9b18;
+  --tps-dark: #151515;
+  --tps-darker: #141414;
+  --tps-white: #ffffff;
+  --tps-light: #fff8f2;
+  --tps-muted: #6b6b6b;
+  --tps-border: #f1e4da;
+  --tps-font-heading: Inter, Arial, sans-serif;
+  --tps-font-body: Inter, Arial, sans-serif;
+  --np-fixed-header-height: 82px;
+  --tps-fixed-header-height: 82px;
 
   /* Framework7 overrides */
   --f7-font-family: var(--tps-font-body);

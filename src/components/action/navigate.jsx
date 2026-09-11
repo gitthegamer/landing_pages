@@ -1,10 +1,10 @@
 let navigateFn = null;
 
-export const HEADER_SCROLL_OFFSET = 86;
+export const HEADER_SCROLL_OFFSET = 90;
 
 export function getHeaderScrollOffset() {
   const raw = getComputedStyle(document.documentElement).getPropertyValue(
-    "--tps-fixed-header-height"
+    "--np-fixed-header-height"
   );
   const height = parseInt(raw, 10);
   return Number.isFinite(height) && height > 0 ? height + 8 : HEADER_SCROLL_OFFSET;

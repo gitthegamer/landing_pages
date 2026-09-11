@@ -96,27 +96,27 @@ const MyApp = () => {
       <Helmet>
         <title>
           {globalSettings?.meta_title ||
-            "The Play Standard | Ranked by Players. Built on Trust."}
+            "7E Next Play — Super Platform System"}
         </title>
         <meta
           name="description"
           content={
             globalSettings?.meta_description ||
-            "Independent rankings shaped by real player votes. Premium player-powered platform rankings — demo."
+            "A smarter super platform designed to simplify operations, reduce manual work and support your next stage of growth."
           }
         />
         <meta
           property="og:title"
           content={
             globalSettings?.meta_title ||
-            "The Play Standard | Ranked by Players. Built on Trust."
+            "7E Next Play — Super Platform System"
           }
         />
         <meta
           property="og:description"
           content={
             globalSettings?.meta_description ||
-            "Independent. Transparent. Player-powered rankings."
+            "7E Next Play — Super Platform System for smarter operations and long-term growth."
           }
         />
         <meta
