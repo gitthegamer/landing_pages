@@ -37,15 +37,6 @@ export default function HeroSection() {
       </div>
       <div className="visual">
         <div className="visual-shell">
-          <div className="growth">↗</div>
-          <div className="float-card fc1">
-            <b>{t("np.hero.morePlayers")}</b>
-            <span>{t("np.hero.morePossibilities")}</span>
-          </div>
-          <div className="float-card fc2">
-            <b>{t("np.hero.smarterOps")}</b>
-            <span>{t("np.hero.builtForGrowth")}</span>
-          </div>
           <div className="ring" />
           <div className="ring r2" />
           <div className="orb">
@@ -56,7 +47,18 @@ export default function HeroSection() {
               alt="7E Next Play"
             />
           </div>
-          <div className="platform" />
+          <div className="platform">
+            <span className="platform-label">7E NEXT PLAY</span>
+          </div>
+          <div className="growth">↗</div>
+          <div className="float-card fc1">
+            <b>{t("np.hero.morePlayers")}</b>
+            <span>{t("np.hero.morePossibilities")}</span>
+          </div>
+          <div className="float-card fc2">
+            <b>{t("np.hero.smarterOps")}</b>
+            <span>{t("np.hero.builtForGrowth")}</span>
+          </div>
         </div>
       </div>
     </header>
