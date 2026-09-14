@@ -587,6 +587,15 @@ html.np-landing .np-page .page-content {
       transform: scale(0.86);
     }
 
+    .fc2 {
+      left: -36px;
+    }
+
+    .platform-label {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+    }
+
     .cards {
       grid-template-columns: 1fr 1fr;
     }
@@ -615,6 +624,21 @@ html.np-landing .np-page .page-content {
 
     .visual-shell {
       transform: scale(0.72);
+    }
+
+    .fc2 {
+      left: -28px;
+      bottom: 70px;
+    }
+
+    .platform {
+      width: 320px;
+      padding-bottom: 16px;
+    }
+
+    .platform-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
     }
 
     .cards {
