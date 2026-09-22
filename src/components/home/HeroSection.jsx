@@ -35,32 +35,7 @@ export default function HeroSection() {
           </a>
         </div>
       </div>
-      <div className="visual">
-        <div className="visual-shell">
-          <div className="ring" />
-          <div className="ring r2" />
-          <div className="orb">
-            <div className="orb-grid" />
-            <img
-              className="orb-logo"
-              src="/assets/image/logo/logo.png"
-              alt="7E Next Play"
-            />
-          </div>
-          <div className="platform">
-            <span className="platform-label">7E NEXT PLAY</span>
-          </div>
-          <div className="growth">↗</div>
-          <div className="float-card fc1">
-            <b>{t("np.hero.morePlayers")}</b>
-            <span>{t("np.hero.morePossibilities")}</span>
-          </div>
-          <div className="float-card fc2">
-            <b>{t("np.hero.smarterOps")}</b>
-            <span>{t("np.hero.builtForGrowth")}</span>
-          </div>
-        </div>
-      </div>
+      <div className="visual" aria-hidden="true" />
     </header>
   );
 }
