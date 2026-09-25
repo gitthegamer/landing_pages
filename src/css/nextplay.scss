@@ -124,16 +124,37 @@ html.np-landing .np-page .page-content {
     cursor: pointer;
   }
 
+  .links .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
   .lang {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
     border: 1px solid #eee;
     background: #fff;
     border-radius: 12px;
-    padding: 11px 14px;
+    padding: 0 14px;
     font-weight: 700;
     cursor: pointer;
     color: var(--ink);
     font-size: 14px;
     font-family: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .hero {
@@ -400,6 +421,7 @@ html.np-landing .np-page .page-content {
 
     .hero {
       padding-top: 85px;
+      background-image: url("/assets/image/background/landing_bg2.webp");
     }
 
     .hero h1 {

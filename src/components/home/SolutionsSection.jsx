@@ -9,7 +9,11 @@ export default function SolutionsSection() {
     <section className="np-section" id="solutions">
       <div className="center">
         <div className="eyebrow">{t("np.solutions.eyebrow")}</div>
-        <h2>{t("np.solutions.title")}</h2>
+        <h2>
+          {t("np.solutions.title")}
+          <br />
+          {t("np.solutions.title2")}
+        </h2>
         <p>{t("np.solutions.desc")}</p>
       </div>
       <div className="cards" id="features">
