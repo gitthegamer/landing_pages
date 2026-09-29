@@ -6,25 +6,22 @@ export default function CreditSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="np-section soft">
-      <div className="split">
-        <div>
-          <div className="eyebrow">{t("np.credit.eyebrow")}</div>
-          <h2>{t("np.credit.title")}</h2>
-          <p>{t("np.credit.desc")}</p>
-          <div className="steps">
-            {NP_CREDIT_STEPS.map((key, index) => (
-              <React.Fragment key={key}>
-                {index > 0 && <span className="arrow">→</span>}
-                <span className="pill">{t(key)}</span>
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-        <div className="panel">
-          <p className="big">24/7</p>
-          <h3>{t("np.credit.panelTitle")}</h3>
-          <p>{t("np.credit.panelDesc")}</p>
+    <section className="np-section soft" id="credit">
+      <div className="center credit-block">
+        <div className="eyebrow">{t("np.credit.eyebrow")}</div>
+        <h2>
+          <span className="accent-line">{t("np.credit.title")}</span>
+          <br />
+          <span className="accent-line">{t("np.credit.title2")}</span>
+        </h2>
+        <p className="section-desc">{t("np.credit.desc")}</p>
+        <div className="steps credit-steps">
+          {NP_CREDIT_STEPS.map((key, index) => (
+            <React.Fragment key={key}>
+              {index > 0 && <span className="arrow">→</span>}
+              <span className="pill">{t(key)}</span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </section>

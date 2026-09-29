@@ -158,7 +158,7 @@ html.np-landing .np-page .page-content {
   }
 
   .hero {
-    min-height: 820px;
+    min-height: 650px;
     padding: 120px 7.5vw 110px;
     display: grid;
     grid-template-columns: 1.02fr 0.98fr;
@@ -197,7 +197,7 @@ html.np-landing .np-page .page-content {
     color: var(--o);
     font-weight: 800;
     letter-spacing: 0.2em;
-    font-size: 13px;
+    font-size: 20px;
   }
 
   .hero h1 {
@@ -212,11 +212,13 @@ html.np-landing .np-page .page-content {
     color: var(--o);
   }
 
-  .hero p {
+  .hero p,
+  .hero-desc {
     font-size: 20px;
     line-height: 1.75;
     color: var(--muted);
     max-width: 610px;
+    white-space: pre-line;
   }
 
   .mini-features {
@@ -249,6 +251,22 @@ html.np-landing .np-page .page-content {
     display: flex;
     gap: 14px;
     margin-top: 34px;
+    align-items: center;
+  }
+
+  .actions .btn,
+  .actions .ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .ghost {
@@ -285,11 +303,34 @@ html.np-landing .np-page .page-content {
     letter-spacing: -0.025em;
   }
 
+  .accent-line {
+    color: var(--o);
+  }
+
+  .section-desc {
+    white-space: pre-line;
+  }
+
   .center p,
   .split p {
     color: var(--muted);
     font-size: 18px;
     line-height: 1.75;
+  }
+
+  .credit-block,
+  .migration-block {
+    max-width: 900px;
+  }
+
+  .credit-steps,
+  .migration-checks {
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  .check-pill {
+    background: #fff0e5;
   }
 
   .cards {
@@ -439,23 +480,29 @@ html.np-landing .np-page .page-content {
     .links a:not(.btn) {
       display: none;
     }
+
+    .mini-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 20px;
+    }
   }
 
   @media (max-width: 560px) {
     .hero {
-      padding: 70px 6vw 70px;
+      padding: 16px 6vw 0px;
     }
 
     .hero h1 {
-      font-size: 44px;
+      font-size: 33px;
     }
 
     .hero p {
-      font-size: 17px;
+      font-size: 14px;
     }
 
     .visual {
-      height: 390px;
+      height: 180px;
     }
 
     .cards {
@@ -472,7 +519,9 @@ html.np-landing .np-page .page-content {
     }
 
     .mini-features {
-      gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 18px;
     }
 
     section.np-section {
@@ -492,8 +541,15 @@ html.np-landing .np-page .page-content {
       font-size: 12px;
     }
 
+    .actions .btn,
+    .actions .ghost {
+      height: 44px;
+      padding: 0 16px;
+      font-size: 13px;
+    }
+
     .btn {
-      padding: 11px 16px;
+      padding: 0 16px;
     }
   }
 }

@@ -10,11 +10,11 @@ export default function SolutionsSection() {
       <div className="center">
         <div className="eyebrow">{t("np.solutions.eyebrow")}</div>
         <h2>
-          {t("np.solutions.title")}
+          <span className="accent-line">{t("np.solutions.title")}</span>
           <br />
-          {t("np.solutions.title2")}
+          <span className="accent-line">{t("np.solutions.title2")}</span>
         </h2>
-        <p>{t("np.solutions.desc")}</p>
+        <p className="section-desc">{t("np.solutions.desc")}</p>
       </div>
       <div className="cards" id="features">
         {NP_FEATURE_CARDS.map((card) => (

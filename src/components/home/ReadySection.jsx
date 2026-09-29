@@ -8,7 +8,11 @@ export default function ReadySection() {
     <section className="np-section dark">
       <div className="center">
         <div className="eyebrow">{t("np.ready.eyebrow")}</div>
-        <h2>{t("np.ready.title")}</h2>
+        <h2>
+          {t("np.ready.title")}
+          <br />
+          {t("np.ready.title2")}
+        </h2>
         <p>{t("np.ready.desc")}</p>
       </div>
     </section>

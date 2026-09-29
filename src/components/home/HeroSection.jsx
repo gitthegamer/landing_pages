@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="hero-copy">
         <div className="eyebrow">{t("np.hero.eyebrow")}</div>
         <h1 dangerouslySetInnerHTML={{ __html: t("np.hero.titleHtml") }} />
-        <p>{t("np.hero.desc")}</p>
+        <p className="hero-desc">{t("np.hero.desc")}</p>
         <div className="mini-features">
           {NP_MINI_FEATURES.map((key) => (
             <span key={key}>{t(key)}</span>
