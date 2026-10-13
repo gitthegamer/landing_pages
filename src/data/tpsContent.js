@@ -1,8 +1,8 @@
 export const TPS_NAV = [
-  { id: "rankings", labelKey: "tps.nav.rankings" },
+  { id: "rankings", labelKey: "tps.nav.rankings", to: "/rankings" },
+  { id: "live", labelKey: "tps.nav.live", to: "/live" },
   { id: "methodology", labelKey: "tps.nav.methodology" },
   { id: "about", labelKey: "tps.nav.about" },
-  { id: "responsible", labelKey: "tps.nav.responsible" },
 ];
 
 export const TPS_LANGS = [
@@ -45,13 +45,23 @@ export const TPS_SPONSORS = [
 ];
 
 export const TPS_STATS = [
-  { value: "18,429", labelKey: "tps.stats.votes", noteKey: "tps.stats.demo" },
-  { value: "10", labelKey: "tps.stats.platforms", noteKey: "tps.stats.demo" },
+  { value: "0", labelKey: "tps.stats.votes", noteKey: "tps.stats.validated" },
+  {
+    value: "0",
+    labelKey: "tps.stats.platforms",
+    noteKey: "tps.stats.validated",
+  },
   {
     value: "Monthly",
     labelKey: "tps.stats.update",
-    noteKey: "tps.stats.concept",
+    noteKey: "tps.stats.myt",
   },
+];
+
+export const TPS_CATEGORIES = [
+  { id: "popular", labelKey: "tps.cat.popular" },
+  { id: "rewards", labelKey: "tps.cat.rewards" },
+  { id: "payout", labelKey: "tps.cat.payout" },
 ];
 
 export const TPS_CHAMPIONS = [
@@ -92,21 +102,21 @@ export const TPS_CHAMPIONS = [
 
 export const TPS_RANKINGS = [
   {
-    rank: "01",
+    category: "popular",
     titleKey: "tps.rank.hot.title",
     descKey: "tps.rank.hot.desc",
     image: "/assets/image/tps/rank-hot-index.jpg",
     alt: "Hot Index casino visual",
   },
   {
-    rank: "02",
+    category: "payout",
     titleKey: "tps.rank.payout.title",
     descKey: "tps.rank.payout.desc",
     image: "/assets/image/tps/rank-payout.jpg",
     alt: "Payout Experience visual",
   },
   {
-    rank: "03",
+    category: "rewards",
     titleKey: "tps.rank.overall.title",
     descKey: "tps.rank.overall.desc",
     image: "/assets/image/tps/rank-overall.jpg",
@@ -154,10 +164,10 @@ export const TPS_STEPS = [
 
 export const TPS_FOOTER = {
   rankings: [
-    { labelKey: "tps.footer.hotIndex", href: "#rankings" },
-    { labelKey: "tps.footer.payout", href: "#rankings" },
-    { labelKey: "tps.footer.tpsOverall", href: "#rankings" },
-    { labelKey: "tps.footer.allRankings", href: "#rankings" },
+    { labelKey: "tps.footer.hotIndex", href: "/rankings?cat=popular" },
+    { labelKey: "tps.footer.payout", href: "/rankings?cat=payout" },
+    { labelKey: "tps.footer.tpsOverall", href: "/rankings?cat=rewards" },
+    { labelKey: "tps.footer.allRankings", href: "/rankings?cat=popular" },
   ],
   information: [
     { labelKey: "tps.footer.methodology", href: "#methodology" },

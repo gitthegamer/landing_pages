@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 import {
@@ -8,22 +9,21 @@ import {
 import { setLanguage } from "./action/preferences";
 import i18n from "../i18n";
 import LanguageState from "../atoms/LanguageState";
-import { TPS_LANGS, TPS_NAV } from "../data/tpsContent";
+import { TPS_NAV } from "../data/tpsContent";
 
-const SECTION_IDS = [
-  "rankings",
-  "feature",
-  "methodology",
-  "about",
-  "responsible",
+const SECTION_IDS = ["methodology", "about", "responsible"];
+const HEADER_LANGS = [
+  { code: "en", label: "EN" },
+  { code: "cn", label: "CN" },
 ];
 
 function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { t, i18n: i18nHook } = useTranslation();
   const [lang, setLang] = useRecoilState(LanguageState);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
 
   const activeLang = (lang || i18nHook.language || i18n.language || "en").split(
     "-",
@@ -31,18 +31,28 @@ function Header() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-  const handleNavClick = useCallback((e, sectionId) => {
-    e.preventDefault();
-    e.stopPropagation();
-    scrollToSection(sectionId);
-    setActive(sectionId);
-    setMenuOpen(false);
-    setLangOpen(false);
-  }, []);
+  const handleNavClick = useCallback(
+    (e, item) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setMenuOpen(false);
+      if (item.to) {
+        navigate(item.to);
+        window.scrollTo({ top: 0 });
+        return;
+      }
+      if (location.pathname !== "/") {
+        navigate(`/#${item.id}`);
+        return;
+      }
+      scrollToSection(item.id);
+      setActive(item.id);
+    },
+    [location.pathname, navigate],
+  );
 
   const toggleMenu = useCallback(() => {
     setMenuOpen((open) => !open);
-    setLangOpen(false);
   }, []);
 
   const handleLanguageChange = useCallback(
@@ -50,7 +60,6 @@ function Header() {
       const next = String(code || "en").toLowerCase();
       if (!["en", "cn", "bm"].includes(next)) return;
 
-      setLangOpen(false);
       setMenuOpen(false);
 
       try {
@@ -146,35 +155,30 @@ function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, [closeMenu]);
 
-  useEffect(() => {
-    if (!langOpen) return undefined;
-    const onDocClick = () => setLangOpen(false);
-    window.addEventListener("click", onDocClick);
-    return () => window.removeEventListener("click", onDocClick);
-  }, [langOpen]);
+  const isItemActive = (item) => {
+    if (item.to) return location.pathname === item.to;
+    return location.pathname === "/" && active === item.id;
+  };
 
-  const currentLang =
-    TPS_LANGS.find((item) => item.code === activeLang) || TPS_LANGS[0];
+  const goHome = useCallback(() => {
+    setActive("");
+    setMenuOpen(false);
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    navigate("/");
+    window.scrollTo({ top: 0 });
+  }, [navigate]);
 
   return (
     <>
       <header className="topbar">
         <div className="wrap nav">
-          <div
+          <Link
             className="brand-lockup"
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              setActive("");
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                setActive("");
-              }
-            }}
+            to="/"
+            onClick={goHome}
           >
             <img
               className="brand-mark"
@@ -185,15 +189,15 @@ function Header() {
               {t("tps.brand")}
               <small>{t("tps.brandTagline")}</small>
             </div>
-          </div>
+          </Link>
 
           <nav className="navlinks">
             {TPS_NAV.map((item) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
-                className={active === item.id ? "is-active" : ""}
-                onClick={(e) => handleNavClick(e, item.id)}
+                href={item.to || `#${item.id}`}
+                className={isItemActive(item) ? "is-active" : ""}
+                onClick={(e) => handleNavClick(e, item)}
               >
                 {t(item.labelKey)}
               </a>
@@ -201,54 +205,22 @@ function Header() {
           </nav>
 
           <div className="nav-actions">
-            <div
-              className={`lang-switch${langOpen ? " is-open" : ""}`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                className="lang-switch-btn"
-                aria-label={t("tps.lang.label")}
-                aria-expanded={langOpen}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setLangOpen((open) => !open);
-                }}
-              >
-                {currentLang.label}
-                <span aria-hidden>⌄</span>
-              </button>
-              {langOpen && (
-                <ul className="lang-switch-menu" role="listbox">
-                  {TPS_LANGS.map((item) => (
-                    <li key={item.code}>
-                      <button
-                        type="button"
-                        className={
-                          item.code === currentLang.code ? "is-active" : ""
-                        }
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleLanguageChange(item.code);
-                        }}
-                      >
-                        {item.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
+            <div className="lang-switch" aria-label={t("tps.lang.label")}>
+              {HEADER_LANGS.map((item) => (
+                <button
+                  key={item.code}
+                  type="button"
+                  className={item.code === activeLang ? "is-active" : ""}
+                  onClick={() => handleLanguageChange(item.code)}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
 
-            <a
-              className="vote-now"
-              href="#rankings"
-              onClick={(e) => handleNavClick(e, "rankings")}
-            >
+            <Link className="vote-now" to="/rankings">
               {t("tps.voteNow")}
-            </a>
+            </Link>
 
             <button
               type="button"
@@ -279,35 +251,31 @@ function Header() {
       >
         <ul className="mobile-nav-list">
           {TPS_NAV.map((item) => (
-            <li key={item.id} className={active === item.id ? "is-active" : ""}>
+            <li key={item.id} className={isItemActive(item) ? "is-active" : ""}>
               <a
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
+                href={item.to || `#${item.id}`}
+                onClick={(e) => handleNavClick(e, item)}
               >
                 {t(item.labelKey)}
               </a>
             </li>
           ))}
         </ul>
-        <div className="mobile-lang">
-          {TPS_LANGS.map((item) => (
+        <div className="mobile-lang lang-switch">
+          {HEADER_LANGS.map((item) => (
             <button
               key={item.code}
               type="button"
-              className={item.code === currentLang.code ? "is-active" : ""}
+              className={item.code === activeLang ? "is-active" : ""}
               onClick={() => handleLanguageChange(item.code)}
             >
               {item.label}
             </button>
           ))}
         </div>
-        <a
-          className="vote-now mobile-vote"
-          href="#rankings"
-          onClick={(e) => handleNavClick(e, "rankings")}
-        >
+        <Link className="vote-now mobile-vote" to="/rankings" onClick={closeMenu}>
           {t("tps.voteNow")}
-        </a>
+        </Link>
       </nav>
     </>
   );

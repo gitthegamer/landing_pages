@@ -39,10 +39,7 @@ export default function SponsorBar() {
         <div className="sponsor-window">
           <div className="sponsor-track">
             {track.map((sponsor, index) => (
-              <SponsorCard
-                key={`${sponsor.name}-${index}`}
-                sponsor={sponsor}
-              />
+              <SponsorCard key={`${sponsor.name}-${index}`} sponsor={sponsor} />
             ))}
           </div>
         </div>
