@@ -461,7 +461,11 @@ html.np-landing .np-page .page-content {
     }
 
     .hero {
+      /* Fill the first mobile screen so the next section stays below the fold. */
+      min-height: calc(100vh - var(--np-fixed-header-height));
+      min-height: calc(100svh - var(--np-fixed-header-height));
       padding-top: 85px;
+      padding-bottom: 72px;
       background-image: url("/assets/image/background/landing_bg2.webp");
     }
 
@@ -490,7 +494,9 @@ html.np-landing .np-page .page-content {
 
   @media (max-width: 560px) {
     .hero {
-      padding: 16px 6vw 0px;
+      min-height: calc(100vh - var(--np-fixed-header-height));
+      min-height: calc(100svh - var(--np-fixed-header-height));
+      padding: 16px 6vw 72px;
     }
 
     .hero h1 {
@@ -525,7 +531,7 @@ html.np-landing .np-page .page-content {
     }
 
     section.np-section {
-      padding: 90px 6vw;
+      padding: 45px 6vw;
     }
 
     nav.np-nav {
