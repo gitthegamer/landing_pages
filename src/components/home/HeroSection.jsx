@@ -35,7 +35,6 @@ export default function HeroSection() {
           </a>
         </div>
       </div>
-      <div className="visual" aria-hidden="true" />
     </header>
   );
 }

@@ -196,14 +196,13 @@ html.np-landing .np-page .page-content {
   .eyebrow {
     color: var(--o);
     font-weight: 800;
-    letter-spacing: 0.2em;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .hero h1 {
-    font-size: 74px;
+    font-size: 50px;
     line-height: 1.03;
-    margin: 22px 0 26px;
+    margin: 20px 0 20px;
     max-width: 720px;
     letter-spacing: -0.035em;
   }
@@ -250,7 +249,7 @@ html.np-landing .np-page .page-content {
   .actions {
     display: flex;
     gap: 14px;
-    margin-top: 34px;
+    margin-top: 70px;
     align-items: center;
   }
 
@@ -305,16 +304,18 @@ html.np-landing .np-page .page-content {
 
   .accent-line {
     color: var(--o);
+    font-size: 36px;
   }
 
   .section-desc {
     white-space: pre-line;
+
   }
 
   .center p,
   .split p {
     color: var(--muted);
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.75;
   }
 
@@ -364,6 +365,7 @@ html.np-landing .np-page .page-content {
     font-size: 28px;
     margin-bottom: 22px;
     color: var(--o);
+    text-align: center;
   }
 
   .soft {
@@ -461,11 +463,11 @@ html.np-landing .np-page .page-content {
     }
 
     .hero {
-      /* Fill the first mobile screen so the next section stays below the fold. */
-      min-height: calc(100vh - var(--np-fixed-header-height));
-      min-height: calc(100svh - var(--np-fixed-header-height));
-      padding-top: 85px;
-      padding-bottom: 72px;
+      min-height: auto;
+      align-content: start;
+      align-items: start;
+      padding-top: 20px;
+      padding-bottom: 28px;
       background-image: url("/assets/image/background/landing_bg2.webp");
     }
 
@@ -485,18 +487,53 @@ html.np-landing .np-page .page-content {
       display: none;
     }
 
+    .links {
+      gap: 10px;
+    }
+
+    nav.np-nav img {
+      width: 150px;
+      max-width: calc(100vw - 252px);
+      flex: 0 0 auto;
+    }
+
     .mini-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px 20px;
     }
+
+    .eyebrow {
+      font-size: 14px;
+    }
+
+    .accent-line {
+      font-size: 16px;
+    }
+
+    /* Equal-width credit pills. inline-grid column sizes to the longest label. */
+    .credit-steps {
+      display: inline-grid;
+      grid-auto-flow: row;
+      justify-items: stretch;
+      gap: 12px;
+      margin-inline: auto;
+    }
+
+    .credit-steps .pill {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .credit-steps .arrow {
+      display: none;
+    }
   }
 
   @media (max-width: 560px) {
     .hero {
-      min-height: calc(100vh - var(--np-fixed-header-height));
-      min-height: calc(100svh - var(--np-fixed-header-height));
-      padding: 16px 6vw 72px;
+      min-height: 500px;
+      padding: 8px 6vw 40px;
     }
 
     .hero h1 {
@@ -517,9 +554,9 @@ html.np-landing .np-page .page-content {
 
     .center h2,
     .split h2 {
-      font-size: 38px;
+      font-size: 24px;
+      margin-top: 16px;
     }
-
     .cta h2 {
       font-size: 42px;
     }
@@ -536,10 +573,6 @@ html.np-landing .np-page .page-content {
 
     nav.np-nav {
       padding: 0 6vw;
-    }
-
-    nav.np-nav img {
-      width: 88px;
     }
 
     .lang {
