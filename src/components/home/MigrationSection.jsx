@@ -10,7 +10,15 @@ export default function MigrationSection() {
       <div className="center migration-block">
         <div className="eyebrow">{t("np.migration.eyebrow")}</div>
         <h2>
-          <span className="accent-line">{t("np.migration.title")}</span>
+          <span className="accent-line">
+            {t("np.migration.title")}
+            {t("np.migration.title2") ? (
+              <>
+                <br />
+                {t("np.migration.title2")}
+              </>
+            ) : null}
+          </span>
         </h2>
         <p className="section-desc">{t("np.migration.desc")}</p>
         <div className="steps migration-checks">

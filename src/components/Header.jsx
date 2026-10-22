@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useRecoilState } from "recoil";
 import { scrollToSection } from "./action/navigate";
@@ -48,11 +48,19 @@ function Header() {
     return () => window.removeEventListener("resize", updateHeaderHeight);
   }, []);
 
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      requestAnimationFrame(() => scrollToSection(hash));
+  useLayoutEffect(() => {
+    // Keep a refresh on the hero. A leftover #contact hash scrolls to the CTA.
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}`,
+      );
+    }
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -80,7 +88,8 @@ function Header() {
           {t("np.nav.start")}
         </a>
         <button type="button" className="lang" onClick={toggleLang}>
-          EN / 中文
+          <span className="lang-full">EN / 中文</span>
+          <span className="lang-current">{isZh ? "中文" : "EN"}</span>
         </button>
       </div>
     </nav>

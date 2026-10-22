@@ -157,6 +157,10 @@ html.np-landing .np-page .page-content {
     box-sizing: border-box;
   }
 
+  .lang-current {
+    display: none;
+  }
+
   .hero {
     min-height: 650px;
     padding: 120px 7.5vw 110px;
@@ -196,7 +200,7 @@ html.np-landing .np-page .page-content {
   .eyebrow {
     color: var(--o);
     font-weight: 800;
-    font-size: 24px;
+    font-size: 32px;
   }
 
   .hero h1 {
@@ -249,7 +253,7 @@ html.np-landing .np-page .page-content {
   .actions {
     display: flex;
     gap: 14px;
-    margin-top: 70px;
+    margin-top: 140px;
     align-items: center;
   }
 
@@ -304,12 +308,16 @@ html.np-landing .np-page .page-content {
 
   .accent-line {
     color: var(--o);
-    font-size: 36px;
+    font-size: 48px;
   }
 
   .section-desc {
     white-space: pre-line;
+  }
 
+  .center p.section-desc,
+  .split p.section-desc {
+    font-size: 20px;
   }
 
   .center p,
@@ -492,9 +500,31 @@ html.np-landing .np-page .page-content {
     }
 
     nav.np-nav img {
-      width: 150px;
-      max-width: calc(100vw - 252px);
+      width: 188px;
+      max-width: calc(100vw - 196px);
       flex: 0 0 auto;
+    }
+
+    .links .btn {
+      height: 32px;
+      padding: 0 10px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .lang {
+      height: 32px;
+      padding: 0 8px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .lang-full {
+      display: none;
+    }
+
+    .lang-current {
+      display: inline;
     }
 
     .mini-features {
@@ -510,7 +540,7 @@ html.np-landing .np-page .page-content {
     .center h2,
     .split h2,
     .accent-line {
-      font-size: clamp(18px, 4.6vw, 28px);
+      font-size: clamp(19px, 4.6vw, 28px);
       line-height: 1.2;
       white-space: nowrap;
     }
@@ -520,9 +550,16 @@ html.np-landing .np-page .page-content {
       display: none;
     }
 
+    /* Migration title keeps its two lines on mobile. */
+    .center h2 .accent-line br {
+      display: inline;
+    }
+
     .center p,
     .split p,
-    .cta p {
+    .cta p,
+    .center p.section-desc,
+    .split p.section-desc {
       font-size: 14px;
     }
 
@@ -602,11 +639,6 @@ html.np-landing .np-page .page-content {
 
     nav.np-nav {
       padding: 0 6vw;
-    }
-
-    .lang {
-      padding: 9px 10px;
-      font-size: 12px;
     }
 
     .actions .btn,

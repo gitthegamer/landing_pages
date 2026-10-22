@@ -53,14 +53,6 @@ export function scrollToSection(sectionId) {
     scrollRoot.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   }
 
-  const hash = `#${id}`;
-  if (window.location.hash !== hash) {
-    window.history.pushState(
-      null,
-      "",
-      `${window.location.pathname}${window.location.search}${hash}`,
-    );
-  }
 }
 
 /**
