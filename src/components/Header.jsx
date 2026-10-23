@@ -10,7 +10,7 @@ import { NP_NAV } from "../data/nextplayContent";
 function Header() {
   const { t, i18n: i18nHook } = useTranslation();
   const [lang, setLang] = useRecoilState(LanguageState);
-  const isZh = (lang || i18nHook.language || "en").startsWith("cn");
+  const isZh = (lang || i18nHook.language || "cn").startsWith("cn");
 
   const handleNavClick = useCallback((e, sectionId) => {
     e.preventDefault();

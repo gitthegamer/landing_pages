@@ -14,7 +14,7 @@ api.interceptors.request.use(async (config) => {
   }
   delete config.usePlatform;
 
-  const currentLanguage = (await getLanguage()) || "en";
+  const currentLanguage = (await getLanguage()) || "cn";
   config.params = { ...config.params, locale: currentLanguage };
   return config;
 });

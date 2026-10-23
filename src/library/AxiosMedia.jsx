@@ -11,7 +11,7 @@ const api_file = axios.create({
 api_file.interceptors.request.use(async (config) => {
   config.headers["token"] = (await loadToken()) || null;
   // config.headers["RefCode"] = localStorage.getItem("ref");
-  const currentLanguage = (await getLanguage()) || "en";
+  const currentLanguage = (await getLanguage()) || "cn";
   config.params = {
     ...config.params,
     locale: currentLanguage,

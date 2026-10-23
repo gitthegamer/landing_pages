@@ -24,12 +24,14 @@ const MyApp = () => {
   useEffect(() => {
     const initializeLanguage = async () => {
       try {
-        const language = (await getLanguage()) ?? "en";
-        const resolved = ["en", "cn", "bm"].includes(language) ? language : "en";
+        const language = (await getLanguage()) ?? "cn";
+        const resolved = ["en", "cn", "bm"].includes(language) ? language : "cn";
         await i18n.changeLanguage(resolved);
         setLang(resolved);
+        document.documentElement.lang = resolved === "cn" ? "zh" : resolved;
       } catch (error) {
-        setLang("en");
+        setLang("cn");
+        document.documentElement.lang = "zh";
       }
 
       f7.params.dialog.buttonOk = i18n.t("Confirm");
