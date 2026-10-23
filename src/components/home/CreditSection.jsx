@@ -10,13 +10,21 @@ export default function CreditSection() {
       <div className="center credit-block">
         <div className="eyebrow">{t("np.credit.eyebrow")}</div>
         <h2>
-          <span className="accent-line">{t("np.credit.title")}</span>
+          <span className="accent-line">
+            {t("np.credit.title")}
+            {t("np.credit.title2") ? (
+              <>
+                <br />
+                {t("np.credit.title2")}
+              </>
+            ) : null}
+          </span>
         </h2>
         <p className="section-desc">{t("np.credit.desc")}</p>
         <div className="steps credit-steps">
           {NP_CREDIT_STEPS.map((key, index) => (
             <React.Fragment key={key}>
-              {/* {index > 0 && <span className="arrow">→</span>} */}
+              {index > 0 && <span className="arrow">→</span>}
               <span className="pill">{t(key)}</span>
             </React.Fragment>
           ))}

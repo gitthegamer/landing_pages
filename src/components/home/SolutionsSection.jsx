@@ -10,7 +10,15 @@ export default function SolutionsSection() {
       <div className="center">
         <div className="eyebrow">{t("np.solutions.eyebrow")}</div>
         <h2>
-          <span className="accent-line">{t("np.solutions.title")}</span>
+          <span className="accent-line">
+            {t("np.solutions.title")}
+            {t("np.solutions.title2") ? (
+              <>
+                <br />
+                {t("np.solutions.title2")}
+              </>
+            ) : null}
+          </span>
         </h2>
         <p className="section-desc">{t("np.solutions.desc")}</p>
       </div>

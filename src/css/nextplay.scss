@@ -105,12 +105,15 @@ html.np-landing .np-page .page-content {
     display: flex;
     gap: 30px;
     align-items: center;
+    flex-shrink: 0;
   }
 
   .links a {
     color: #333;
     text-decoration: none;
     font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .btn {
@@ -540,7 +543,7 @@ html.np-landing .np-page .page-content {
     .center h2,
     .split h2,
     .accent-line {
-      font-size: clamp(20px, 4vw, 28px);
+      font-size: clamp(19px, 4vw, 28px);
       line-height: 1.2;
       white-space: nowrap;
     }
@@ -551,6 +554,7 @@ html.np-landing .np-page .page-content {
     }
 
     /* Migration title keeps its two lines on mobile. */
+    .center h2 br.title-break,
     .center h2 .accent-line br {
       display: inline;
     }
@@ -584,7 +588,8 @@ html.np-landing .np-page .page-content {
     }
 
     .credit-steps .arrow {
-      display: none;
+      justify-self: center;
+      width: auto;
     }
 
     /* One hero button per row on mobile. */
