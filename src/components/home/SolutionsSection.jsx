@@ -15,6 +15,8 @@ export default function SolutionsSection() {
             {t("np.solutions.title2") ? (
               <>
                 <br />
+                {/* NOTE: space joins the two lines on mobile; a leading space after <br> collapses on desktop. */}
+                {/[，。]$/.test(t("np.solutions.title")) ? "" : " "}
                 {t("np.solutions.title2")}
               </>
             ) : null}

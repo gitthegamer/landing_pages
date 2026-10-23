@@ -15,6 +15,8 @@ export default function CreditSection() {
             {t("np.credit.title2") ? (
               <>
                 <br />
+                {/* NOTE: space joins the two lines on mobile; a leading space after <br> collapses on desktop. */}
+                {/[，。]$/.test(t("np.credit.title")) ? "" : " "}
                 {t("np.credit.title2")}
               </>
             ) : null}

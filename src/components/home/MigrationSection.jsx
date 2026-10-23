@@ -15,6 +15,8 @@ export default function MigrationSection() {
             {t("np.migration.title2") ? (
               <>
                 <br />
+                {/* NOTE: space joins the two lines on mobile; a leading space after <br> collapses on desktop. */}
+                {/[，。]$/.test(t("np.migration.title")) ? "" : " "}
                 {t("np.migration.title2")}
               </>
             ) : null}
